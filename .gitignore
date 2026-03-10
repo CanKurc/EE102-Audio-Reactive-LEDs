@@ -1,0 +1,20 @@
+# Vivado-specific ignore rules
+*.jou
+*.log
+*.pb
+*.wdb
+*.wcfg
+*.str
+*.zip
+.Xil/
+
+# Ignore Vivado generated project directories (we only want the source files!)
+*.runs/
+*.sim/
+*.cache/
+*.hw/
+*.ip_user_files/
+
+# Ignore compiled bitstreams (generate these fresh each time)
+*.bit
+*.bin
