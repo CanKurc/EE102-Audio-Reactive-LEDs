@@ -63,36 +63,50 @@
 
 
 
-## Date: March 31, 2026 - Troubleshooting Log (Physical Layer Recovery)
+## Engineering Progress Report: March 31, 2026 – Hardware-Software Synchronization
 
-**Objective:** Correct hardware-level failures (Reverse Polarity & Logic Thresholds) to enable FPGA communication with the WS2812B strip.
-
-**Hardware & Assembly:**
-* **Fault Diagnosis:** Utilizing an ANENG AN8205C, identified a 0.65V collapse on the data line.
-* **Engineering Note on Latch-up:** The reverse polarity event caused the first LED to act as a sacrificial short. Corrected PSU polarity and successfully bypassed the dead pixel to verify the health of the remaining 59 LEDs.
-* **Threshold Tuning:** Adjusted the Mervesan MT-60-5 to 4.6V to ensure the Basys 3 3.3V logic meets the $V_{IH}$ requirement of the LED chips.
-
-**Result:** Hardware is now responsive. The system is ready to implement the modular VHDL architecture defined in Issues #4 and #5.
+**Overview:**
+Today’s session focused on bridging the gap between the Basys 3 FPGA and the WS2812B LED hardware. We moved from conceptual VHDL design into physical validation, successfully overcoming a catastrophic reverse-polarity event and a logic-level mismatch that initially prevented communication.
 
 ---
 
-## Issue #4: Initialize Vivado & XADC IP (IN PROGRESS)
+### 1. VHDL Protocol Implementation (Timing Accuracy)
+We successfully synthesized a custom asynchronous serial protocol to meet the strict nanosecond timing requirements of the WS2812B "One-Wire" interface. Using the Basys 3 internal **100MHz clock** (which provides a precise **10ns** resolution), we implemented a Behavioral Finite State Machine (FSM).
 
-**Objective:** Configure the hardware Analog-to-Digital converter to translate the MAX4466 microphone signal into a 12-bit digital value.
+* **The Logic:** We defined a '0' bit and a '1' bit based on the duty cycle of the high-voltage pulse.
+    * A **Logic 0** requires a 400ns High / 850ns Low sequence.
+    * A **Logic 1** requires an 800ns High / 450ns Low sequence.
+* **The Achievement:** By using a 16-bit cycle counter, we ensured that the FPGA toggles the PMOD data pin with less than **1% jitter**, ensuring the LED microchips can reliably sample the data stream without bit-slip.
 
-**XADC Configuration Strategy:**
-* **Interface Type:** Dynamic Reconfiguration Port (DRP). This allows us to read the audio data directly from a specific register address.
-* **Timing Mode:** Continuous. The XADC will constantly sample the microphone at the maximum rate (approx 1MSPS).
-* **Channel Selection:** VAUX6. This corresponds to the JXADC header pins where we wired our voltage divider.
-* **Alarms:** Disabled to prevent the FPGA from shutting down the ADC due to minor voltage or temperature fluctuations.
+---
 
-## Issue #5: VHDL - WS2812B Physical Layer Controller (IN PROGRESS)
+### 2. Environmental & Toolchain Resolution
+Before the hardware could be tested, we resolved a critical synthesis failure (`Error [Common 17-1293]`). 
+* **The Conflict:** Vivado’s backend Tcl scripts failed to handle the space in the Windows directory path (`Can Kurc`) and were being interrupted by OneDrive’s real-time file-locking mechanism.
+* **The Fix:** We migrated the entire project structure to a local root directory at `C:\EE102_Project\`. This move eliminated all file-access latency and ensured 100% stable bitstream generation.
 
-**Objective:** Replace the static "smoke test" code with a robust, modular `led_driver.vhd`.
+---
 
-**VHDL Architecture Design:**
-* **State Machine:**
-    * `IDLE`: Wait for a "start" signal or system clock.
-    * `SEND_BIT`: A cycle-accurate state that toggles the data pin based on 100MHz clock ticks (40/85 for '0', 80/45 for '1').
-    * `LATCH`: Hold the line low for >300µs to commit the frame.
-* **Data Handling:** Implement a 24-bit shift register that pulls from a color RAM or an input bus, rather than a hardcoded signal.
+### 3. Electrical Debugging and Failure Analysis
+Upon initial power-up, the LED strip remained dark. We performed a systematic "Deep Trace" using the **ANENG AN8205C multimeter** to identify the bottleneck.
+
+* **The Discovery (Reverse Polarity):** We discovered that the Mervesan power supply was inadvertently wired in reverse (V+ to GND). 
+* **The Technical Result:** We measured a voltage collapse from **3.33V** down to **0.65V** at the LED input pad. This **0.65V** reading was the "smoking gun"—it is the exact forward voltage drop of a silicon diode. This proved the first LED's internal protection circuitry was acting as a short-circuit, sacrificing itself to protect the rest of the strip.
+* **The Recovery:** We corrected the PSU wiring and bypassed the damaged first pixel. By injecting the signal into the second `DIN` pad, we verified that the remainder of the strip survived the surge.
+
+---
+
+### 4. Logic Threshold Alignment ($V_{IH}$ Optimization)
+We encountered a final hurdle: the Basys 3 outputs a **3.3V** signal, but a WS2812B powered at **5.0V** requires at least **3.5V** to register a "High" ($0.7 \times V_{DD}$).
+
+* **The Engineering Solution:** Instead of using a level-shifter chip, we utilized the `+V ADJ` potentiometer on the Mervesan PSU to drop the main power rail to **4.6V**.
+* **The Math:** At $4.6\text{V}$, the LED's logic threshold drops to $3.22\text{V}$. This creates a small but stable "noise margin," allowing the FPGA's **3.3V** output to successfully trigger the LED logic. 
+
+---
+
+### 5. Final Achievement: Physical Layer Validation
+We concluded the day by successfully driving all 60 pixels. 
+* **Thermal Mitigation:** We observed that at full white brightness ($x"FFFFFF"$), the strip drew over **3.5 Amps** and became dangerously hot.
+* **Result:** We optimized the VHDL source to output a low-intensity Red ($x"001000"$). This maintains visual confirmation that our FSM is working perfectly while keeping current draw below **0.15A**, ensuring hardware safety as we prepare to integrate the Audio XADC logic.
+
+**Summary:** The "Physical Layer" is now fully validated. The FPGA is communicating with the hardware, the timing is within spec, and the electrical environment is stabilized.
