@@ -56,3 +56,43 @@
 
 **Final Integration:**
 * A standard jumper pin was soldered to the input side of $R_s$ and routed directly to the Basys 3 PMOD Header JA, Pin 1, preparing the hardware to receive the 3.3V logic signal from the FPGA.
+
+
+
+
+
+
+
+## Date: March 31, 2026 - Troubleshooting Log (Physical Layer Recovery)
+
+**Objective:** Correct hardware-level failures (Reverse Polarity & Logic Thresholds) to enable FPGA communication with the WS2812B strip.
+
+**Hardware & Assembly:**
+* **Fault Diagnosis:** Utilizing an ANENG AN8205C, identified a 0.65V collapse on the data line.
+* **Engineering Note on Latch-up:** The reverse polarity event caused the first LED to act as a sacrificial short. Corrected PSU polarity and successfully bypassed the dead pixel to verify the health of the remaining 59 LEDs.
+* **Threshold Tuning:** Adjusted the Mervesan MT-60-5 to 4.6V to ensure the Basys 3 3.3V logic meets the $V_{IH}$ requirement of the LED chips.
+
+**Result:** Hardware is now responsive. The system is ready to implement the modular VHDL architecture defined in Issues #4 and #5.
+
+---
+
+## Issue #4: Initialize Vivado & XADC IP (IN PROGRESS)
+
+**Objective:** Configure the hardware Analog-to-Digital converter to translate the MAX4466 microphone signal into a 12-bit digital value.
+
+**XADC Configuration Strategy:**
+* **Interface Type:** Dynamic Reconfiguration Port (DRP). This allows us to read the audio data directly from a specific register address.
+* **Timing Mode:** Continuous. The XADC will constantly sample the microphone at the maximum rate (approx 1MSPS).
+* **Channel Selection:** VAUX6. This corresponds to the JXADC header pins where we wired our voltage divider.
+* **Alarms:** Disabled to prevent the FPGA from shutting down the ADC due to minor voltage or temperature fluctuations.
+
+## Issue #5: VHDL - WS2812B Physical Layer Controller (IN PROGRESS)
+
+**Objective:** Replace the static "smoke test" code with a robust, modular `led_driver.vhd`.
+
+**VHDL Architecture Design:**
+* **State Machine:**
+    * `IDLE`: Wait for a "start" signal or system clock.
+    * `SEND_BIT`: A cycle-accurate state that toggles the data pin based on 100MHz clock ticks (40/85 for '0', 80/45 for '1').
+    * `LATCH`: Hold the line low for >300µs to commit the frame.
+* **Data Handling:** Implement a 24-bit shift register that pulls from a color RAM or an input bus, rather than a hardcoded signal.
