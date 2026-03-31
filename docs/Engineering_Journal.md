@@ -46,7 +46,7 @@
 
 **Hardware & Assembly:**
 * **Impedance Matching:** Implemented a series current-limiting resistor ($R_s$) on the data line.
-  * Series Resistor ($R_s$): 330Ω (or 470Ω)
+  * Series Resistor ($R_s$): 330Ω
 * **Placement:** Soldered $R_s$ directly in series with the WS2812B green `DIN` wire, placing the component as physically close to the first LED pixel as possible to maximize signal integrity and prevent the nanosecond-level square waves from echoing.
 * **Insulation:** Secured the soldered joint using heat shrink tubing.
 
@@ -78,11 +78,28 @@
 
 **Hardware Validation & Logic Alignment:**
 * **Polarity Correction:** The Mervesan MT-60-5 power supply wiring was corrected (Red to +5V, White to GND) after a reverse-polarity event was identified via multimeter. It was observed that the first LED chip resumed normal operation without the need for a physical bypass, indicating the internal protection circuitry prevented permanent latch-up.
-* **Threshold Optimization:** A logic-level mismatch was identified between the 3.3V FPGA output and the 3.5V $V_{IH}$ requirement of the LEDs. To resolve this, the Mervesan output was tuned to 4.6V using the `+V ADJ` potentiometer.
-* **Engineering Note on Signal Integrity:** With $V_{DD}$ set to 4.6V, the 3.3V signal from PMOD JA Pin 1 was successfully registered as a valid logic "High" by the integrated circuits within the strip. Signal stability was verified by the consistent, flicker-free white illumination of all 60 pixels.
 
 **Testing & Validation:**
 * **Static Measurement:** An ANENG AN8205C multimeter was utilized to verify a steady 3.33V output at the FPGA pin during a "Static High" test.
 * **Environmental Resolution:** A critical project migration was performed to `C:\EE102_Project\` to eliminate write-permission errors caused by the OneDrive sync engine and file-path character restrictions. This migration enabled the successful generation of the bitstream used for the final hardware test.
 
 **Current Status:** The FSM and 24-bit serialization logic are verified via the white light test. Issue #5 remains "In Progress" as dynamic color control via external inputs has not yet been integrated.
+
+
+## Date: March 31, 2026 - Issue #5 Continued (Reference Architecture: Dynamic Color & Brightness Control)
+
+**Objective:** Design and document a reference architecture for extending the white-light FSM to accept real-time color selection and brightness control from the Basys 3 physical switches.
+
+**Reference Design Decisions:**
+* **Switch Allocation:** 8 of the 16 onboard switches were allocated to LED control:
+    * SW0–SW3 (`color_sel[3:0]`): 4-bit index into a 16-entry Color Look-Up Table.
+    * SW4–SW6 (`brightness[2:0]`): 3-bit brightness scaler using right-shift division.
+    * SW7 (`led_enable`): Master on/off control. When low, all-zero data is sent (strip dark).
+* **Color LUT:** A constant array of 16 pre-defined 24-bit colors in GRB byte order (the native format of the WS2812B protocol).
+* **Brightness Scaling:** Each 8-bit color channel is right-shifted by the brightness value (0–7), providing 8 logarithmic brightness levels from full intensity (÷1) to very dim (÷128). Right-shifting synthesizes to pure wire routing with zero logic resource cost.
+* **Frame-Boundary Switch Sampling:** Switch values are latched once per frame at the transition from `RESET_STATE` to `SEND_STATE`, preventing mid-frame color tearing.
+* **`mod 24` Replacement:** The combinational `bit_count mod 24` operation was identified as synthesizing to an expensive hardware divider. The reference design replaces it with a `bit_in_pixel` counter (0→23, rollover) using a simple comparator.
+
+**Important Note:** This reference version was developed with AI assistance for documentation and learning purposes. It has been archived in the chat history as a target specification. **The actual project code will be rewritten from scratch** to ensure complete understanding of every VHDL construct, signal, and design decision involved.
+
+**Current Status:** Issue #5 remains "In Progress". The next step is a from-scratch reimplementation, built incrementally, guided by the course syllabus material and the author's existing VHDL knowledge.
