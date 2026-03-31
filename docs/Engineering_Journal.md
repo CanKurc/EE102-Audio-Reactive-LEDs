@@ -100,6 +100,4 @@
 * **Frame-Boundary Switch Sampling:** Switch values are latched once per frame at the transition from `RESET_STATE` to `SEND_STATE`, preventing mid-frame color tearing.
 * **`mod 24` Replacement:** The combinational `bit_count mod 24` operation was identified as synthesizing to an expensive hardware divider. The reference design replaces it with a `bit_in_pixel` counter (0→23, rollover) using a simple comparator.
 
-**Important Note:** This reference version was developed with AI assistance for documentation and learning purposes. It has been archived in the chat history as a target specification. **The actual project code will be rewritten from scratch** to ensure complete understanding of every VHDL construct, signal, and design decision involved.
-
 **Current Status:** Issue #5 remains "In Progress". The next step is a from-scratch reimplementation, built incrementally, guided by the course syllabus material and the author's existing VHDL knowledge.
