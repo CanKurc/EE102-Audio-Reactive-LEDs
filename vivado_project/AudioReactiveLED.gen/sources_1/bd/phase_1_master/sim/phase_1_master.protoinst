@@ -1,0 +1,9 @@
+{
+	"version": "1.0",
+	"modules": {
+		"phase_1_master": {
+			"proto_instances": {
+			}
+		}
+	}
+}

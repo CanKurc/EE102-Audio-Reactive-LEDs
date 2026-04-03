@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Fri Apr  3 12:50:20 2026" VIVADOVERSION="2025.2">
+
+  <SYSTEMINFO ARCH="artix7" DEVICE="7a35t" NAME="phase_1_master" PACKAGE="cpg236" SPEEDGRADE="-1"/>
+
+  <EXTERNALPORTS>
+    <PORT DIR="O" LEFT="3" NAME="an_0_0" RIGHT="0" SIGIS="undef" SIGNAME="seven_segment_displa_0_an_0">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="seven_segment_displa_0" PORT="an_0"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" LEFT="2" NAME="brightness_0_0" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_brightness_0_0">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="led_subsystem_wrapper_0" PORT="brightness_0"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="clk_0_0" SIGIS="undef" SIGNAME="External_Ports_clk_0_0">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="led_subsystem_wrapper_0" PORT="clk_0"/>
+        <CONNECTION INSTANCE="seven_segment_displa_0" PORT="clk_0"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" LEFT="3" NAME="color_sel_0_0" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_color_sel_0_0">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="led_subsystem_wrapper_0" PORT="color_sel_0"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="frame_done_0_0" SIGIS="undef" SIGNAME="led_subsystem_wrapper_0_frame_done_0">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="led_subsystem_wrapper_0" PORT="frame_done_0"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="led_data_out_0_0" SIGIS="undef" SIGNAME="led_subsystem_wrapper_0_led_data_out_0">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="led_subsystem_wrapper_0" PORT="led_data_out_0"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="led_enable_0_0" SIGIS="undef" SIGNAME="External_Ports_led_enable_0_0">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="led_subsystem_wrapper_0" PORT="led_enable_0"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="reset_0_0" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="External_Ports_reset_0_0">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="led_subsystem_wrapper_0" PORT="reset_0"/>
+        <CONNECTION INSTANCE="seven_segment_displa_0" PORT="reset_in_0"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" LEFT="6" NAME="seg_out_0_0" RIGHT="0" SIGIS="undef" SIGNAME="seven_segment_displa_0_seg_out_0">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="seven_segment_displa_0" PORT="seg_out_0"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="vauxn6_0_0" SIGIS="undef" SIGNAME="External_Ports_vauxn6_0_0">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="seven_segment_displa_0" PORT="vauxn6_0"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="vauxp6_0_0" SIGIS="undef" SIGNAME="External_Ports_vauxp6_0_0">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="seven_segment_displa_0" PORT="vauxp6_0"/>
+      </CONNECTIONS>
+    </PORT>
+  </EXTERNALPORTS>
+
+  <EXTERNALINTERFACES/>
+
+  <MODULES>
+    <MODULE COREREVISION="1" FULLNAME="/led_subsystem_wrapper_0" HWVERSION="1.0" INSTANCE="led_subsystem_wrapper_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="led_subsystem_wrapper" VLNV="xilinx.com:module_ref:led_subsystem_wrapper:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="phase_1_master_led_subsystem_wrapper_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="2" NAME="brightness_0" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_brightness_0_0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="brightness_0_0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="clk_0" SIGIS="undef" SIGNAME="External_Ports_clk_0_0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="clk_0_0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="3" NAME="color_sel_0" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_color_sel_0_0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="color_sel_0_0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="frame_done_0" SIGIS="undef" SIGNAME="led_subsystem_wrapper_0_frame_done_0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="frame_done_0_0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="led_data_out_0" SIGIS="undef" SIGNAME="led_subsystem_wrapper_0_led_data_out_0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="led_data_out_0_0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="led_enable_0" SIGIS="undef" SIGNAME="External_Ports_led_enable_0_0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="led_enable_0_0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="reset_0" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="External_Ports_reset_0_0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="reset_0_0"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/seven_segment_displa_0" HWVERSION="1.0" INSTANCE="seven_segment_displa_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="seven_segment_display_wrapper" VLNV="xilinx.com:module_ref:seven_segment_display_wrapper:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="phase_1_master_seven_segment_displa_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="O" LEFT="3" NAME="an_0" RIGHT="0" SIGIS="undef" SIGNAME="seven_segment_displa_0_an_0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="an_0_0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="clk_0" SIGIS="undef" SIGNAME="External_Ports_clk_0_0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="clk_0_0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="reset_in_0" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="External_Ports_reset_0_0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="reset_0_0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="6" NAME="seg_out_0" RIGHT="0" SIGIS="undef" SIGNAME="seven_segment_displa_0_seg_out_0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="seg_out_0_0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="vauxn6_0" SIGIS="undef" SIGNAME="External_Ports_vauxn6_0_0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="vauxn6_0_0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="vauxp6_0" SIGIS="undef" SIGNAME="External_Ports_vauxp6_0_0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="vauxp6_0_0"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+  </MODULES>
+
+</EDKSYSTEM>

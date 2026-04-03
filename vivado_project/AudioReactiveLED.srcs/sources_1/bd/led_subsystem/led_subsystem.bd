@@ -1,0 +1,272 @@
+{
+  "design": {
+    "design_info": {
+      "boundary_crc": "0x30FCA531E4F5C5E",
+      "device": "xc7a35tcpg236-1",
+      "gen_directory": "../../../../AudioReactiveLED.gen/sources_1/bd/led_subsystem",
+      "name": "led_subsystem",
+      "rev_ctrl_bd_flag": "RevCtrlBdOff",
+      "synth_flow_mode": "Hierarchical",
+      "tool_version": "2025.2",
+      "validated": "true"
+    },
+    "design_tree": {
+      "ws2812b_driver_0": "",
+      "color_lut_0": "",
+      "manual_color_select_0": ""
+    },
+    "ports": {
+      "clk_0": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "ASSOCIATED_RESET": {
+            "value": "reset_0",
+            "value_src": "default"
+          },
+          "CLK_DOMAIN": {
+            "value": "led_subsystem_clk_0",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "100000000",
+            "value_src": "default"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "default"
+          }
+        }
+      },
+      "frame_done_0": {
+        "direction": "O"
+      },
+      "led_data_out_0": {
+        "direction": "O"
+      },
+      "reset_0": {
+        "type": "rst",
+        "direction": "I",
+        "parameters": {
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "POLARITY": {
+            "value": "ACTIVE_LOW",
+            "value_src": "default"
+          }
+        }
+      },
+      "color_sel_0": {
+        "direction": "I",
+        "left": "3",
+        "right": "0"
+      },
+      "brightness_0": {
+        "direction": "I",
+        "left": "2",
+        "right": "0"
+      },
+      "led_enable_0": {
+        "direction": "I"
+      }
+    },
+    "components": {
+      "ws2812b_driver_0": {
+        "vlnv": "xilinx.com:module_ref:ws2812b_driver:1.0",
+        "ip_revision": "1",
+        "xci_name": "led_subsystem_ws2812b_driver_0_0",
+        "xci_path": "ip\\led_subsystem_ws2812b_driver_0_0\\led_subsystem_ws2812b_driver_0_0.xci",
+        "inst_hier_path": "ws2812b_driver_0",
+        "has_run_ip_tcl": "true",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "ws2812b_driver",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "reset",
+                "value_src": "constant"
+              },
+              "CLK_DOMAIN": {
+                "value": "led_subsystem_clk_0",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "reset": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "color_in": {
+            "direction": "I",
+            "left": "23",
+            "right": "0"
+          },
+          "enable": {
+            "direction": "I"
+          },
+          "led_data_out": {
+            "direction": "O"
+          },
+          "frame_done": {
+            "direction": "O"
+          }
+        }
+      },
+      "color_lut_0": {
+        "vlnv": "xilinx.com:module_ref:color_lut:1.0",
+        "ip_revision": "1",
+        "xci_name": "led_subsystem_color_lut_0_0",
+        "xci_path": "ip\\led_subsystem_color_lut_0_0\\led_subsystem_color_lut_0_0.xci",
+        "inst_hier_path": "color_lut_0",
+        "has_run_ip_tcl": "true",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "color_lut",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "color_index": {
+            "direction": "I",
+            "left": "3",
+            "right": "0"
+          },
+          "brightness_level": {
+            "direction": "I",
+            "left": "2",
+            "right": "0"
+          },
+          "color_out": {
+            "direction": "O",
+            "left": "23",
+            "right": "0"
+          }
+        }
+      },
+      "manual_color_select_0": {
+        "vlnv": "xilinx.com:module_ref:manual_color_select:1.0",
+        "ip_revision": "1",
+        "xci_name": "led_subsystem_manual_color_select_0_0",
+        "xci_path": "ip\\led_subsystem_manual_color_select_0_0\\led_subsystem_manual_color_select_0_0.xci",
+        "inst_hier_path": "manual_color_select_0",
+        "has_run_ip_tcl": "true",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "manual_color_select",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "color_sel": {
+            "direction": "I",
+            "left": "3",
+            "right": "0"
+          },
+          "brightness": {
+            "direction": "I",
+            "left": "2",
+            "right": "0"
+          },
+          "led_enable": {
+            "direction": "I"
+          },
+          "color_index": {
+            "direction": "O",
+            "left": "3",
+            "right": "0"
+          },
+          "brightness_level": {
+            "direction": "O",
+            "left": "2",
+            "right": "0"
+          },
+          "enable": {
+            "direction": "O"
+          }
+        }
+      }
+    },
+    "nets": {
+      "brightness_0_1": {
+        "ports": [
+          "brightness_0",
+          "manual_color_select_0/brightness"
+        ]
+      },
+      "clk_0_1": {
+        "ports": [
+          "clk_0",
+          "ws2812b_driver_0/clk"
+        ]
+      },
+      "color_lut_0_color_out": {
+        "ports": [
+          "color_lut_0/color_out",
+          "ws2812b_driver_0/color_in"
+        ]
+      },
+      "color_sel_0_1": {
+        "ports": [
+          "color_sel_0",
+          "manual_color_select_0/color_sel"
+        ]
+      },
+      "led_enable_0_1": {
+        "ports": [
+          "led_enable_0",
+          "manual_color_select_0/led_enable"
+        ]
+      },
+      "manual_color_select_0_brightness_level": {
+        "ports": [
+          "manual_color_select_0/brightness_level",
+          "color_lut_0/brightness_level"
+        ]
+      },
+      "manual_color_select_0_color_index": {
+        "ports": [
+          "manual_color_select_0/color_index",
+          "color_lut_0/color_index"
+        ]
+      },
+      "manual_color_select_0_enable": {
+        "ports": [
+          "manual_color_select_0/enable",
+          "ws2812b_driver_0/enable"
+        ]
+      },
+      "reset_0_1": {
+        "ports": [
+          "reset_0",
+          "ws2812b_driver_0/reset"
+        ]
+      },
+      "ws2812b_driver_0_frame_done": {
+        "ports": [
+          "ws2812b_driver_0/frame_done",
+          "frame_done_0"
+        ]
+      },
+      "ws2812b_driver_0_led_data_out": {
+        "ports": [
+          "ws2812b_driver_0/led_data_out",
+          "led_data_out_0"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Fri Apr  3 12:50:17 2026" VIVADOVERSION="2025.2">
+
+  <SYSTEMINFO ARCH="artix7" DEVICE="7a35t" NAME="led_subsystem" PACKAGE="cpg236" SPEEDGRADE="-1"/>
+
+  <EXTERNALPORTS>
+    <PORT DIR="I" LEFT="2" NAME="brightness_0" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_brightness_0">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="manual_color_select_0" PORT="brightness"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clk_0" SIGIS="clk" SIGNAME="External_Ports_clk_0">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="ws2812b_driver_0" PORT="clk"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" LEFT="3" NAME="color_sel_0" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_color_sel_0">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="manual_color_select_0" PORT="color_sel"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="frame_done_0" SIGIS="undef" SIGNAME="ws2812b_driver_0_frame_done">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="ws2812b_driver_0" PORT="frame_done"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="led_data_out_0" SIGIS="undef" SIGNAME="ws2812b_driver_0_led_data_out">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="ws2812b_driver_0" PORT="led_data_out"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="led_enable_0" SIGIS="undef" SIGNAME="External_Ports_led_enable_0">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="manual_color_select_0" PORT="led_enable"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="reset_0" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="External_Ports_reset_0">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="ws2812b_driver_0" PORT="reset"/>
+      </CONNECTIONS>
+    </PORT>
+  </EXTERNALPORTS>
+
+  <EXTERNALINTERFACES/>
+
+  <MODULES>
+    <MODULE COREREVISION="1" FULLNAME="/color_lut_0" HWVERSION="1.0" INSTANCE="color_lut_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="color_lut" VLNV="xilinx.com:module_ref:color_lut:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="led_subsystem_color_lut_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="2" NAME="brightness_level" RIGHT="0" SIGIS="undef" SIGNAME="manual_color_select_0_brightness_level">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="manual_color_select_0" PORT="brightness_level"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="3" NAME="color_index" RIGHT="0" SIGIS="undef" SIGNAME="manual_color_select_0_color_index">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="manual_color_select_0" PORT="color_index"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="23" NAME="color_out" RIGHT="0" SIGIS="undef" SIGNAME="color_lut_0_color_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ws2812b_driver_0" PORT="color_in"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/manual_color_select_0" HWVERSION="1.0" INSTANCE="manual_color_select_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="manual_color_select" VLNV="xilinx.com:module_ref:manual_color_select:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="led_subsystem_manual_color_select_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="2" NAME="brightness" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_brightness_0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="brightness_0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="2" NAME="brightness_level" RIGHT="0" SIGIS="undef" SIGNAME="manual_color_select_0_brightness_level">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="color_lut_0" PORT="brightness_level"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="3" NAME="color_index" RIGHT="0" SIGIS="undef" SIGNAME="manual_color_select_0_color_index">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="color_lut_0" PORT="color_index"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="3" NAME="color_sel" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_color_sel_0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="color_sel_0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="enable" SIGIS="undef" SIGNAME="manual_color_select_0_enable">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ws2812b_driver_0" PORT="enable"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="led_enable" SIGIS="undef" SIGNAME="External_Ports_led_enable_0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="led_enable_0"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/ws2812b_driver_0" HWVERSION="1.0" INSTANCE="ws2812b_driver_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="ws2812b_driver" VLNV="xilinx.com:module_ref:ws2812b_driver:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="led_subsystem_ws2812b_driver_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="External_Ports_clk_0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="clk_0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="23" NAME="color_in" RIGHT="0" SIGIS="undef" SIGNAME="color_lut_0_color_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="color_lut_0" PORT="color_out"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="enable" SIGIS="undef" SIGNAME="manual_color_select_0_enable">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="manual_color_select_0" PORT="enable"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="frame_done" SIGIS="undef" SIGNAME="ws2812b_driver_0_frame_done">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="frame_done_0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="led_data_out" SIGIS="undef" SIGNAME="ws2812b_driver_0_led_data_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="led_data_out_0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="reset" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="External_Ports_reset_0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="reset_0"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+  </MODULES>
+
+</EDKSYSTEM>

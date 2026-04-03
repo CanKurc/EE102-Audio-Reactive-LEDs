@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Root MajorVersion="0" MinorVersion="43">
+  <CompositeFile CompositeFileTopName="led_subsystem" CanBeSetAsTop="false" CanDisplayChildGraph="true">
+    <Description>Composite Fileset</Description>
+    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1775209817"/>
+    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1775209817"/>
+    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1775209817"/>
+    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1775209817"/>
+    <Generation Name="INSTANTIATION_TEMPLATE" State="GENERATED" Timestamp="1775209817"/>
+    <FileCollection Name="SOURCES" Type="SOURCES">
+      <File Name="synth\led_subsystem.v" Type="Verilog">
+        <Properties IsEditable="false" IsVisible="true" IsNetlistSimulation="false" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <ProcessingOrder Val="NORMAL"/>
+      </File>
+      <File Name="sim\led_subsystem.v" Type="Verilog">
+        <Properties IsEditable="false" IsVisible="true" IsNetlistSimulation="false" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SIMULATION"/>
+        <ProcessingOrder Val="NORMAL"/>
+      </File>
+      <File Name="led_subsystem_ooc.xdc" Type="XDC">
+        <Properties IsEditable="false" IsVisible="true" IsNetlistSimulation="false" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="OUT_OF_CONTEXT"/>
+        <ProcessingOrder Val="NORMAL"/>
+      </File>
+      <File Name="hw_handoff\led_subsystem.hwh" Type="HwHandoff">
+        <Properties IsEditable="false" IsVisible="true" IsNetlistSimulation="false" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="HW_HANDOFF"/>
+        <ProcessingOrder Val="NORMAL"/>
+      </File>
+      <File Name="led_subsystem.bda">
+        <Properties IsEditable="false" IsVisible="true" IsNetlistSimulation="false" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="HW_HANDOFF"/>
+        <ProcessingOrder Val="NORMAL"/>
+      </File>
+      <File Name="synth\led_subsystem.hwdef">
+        <Properties IsEditable="false" IsVisible="true" IsNetlistSimulation="false" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="HW_HANDOFF"/>
+        <ProcessingOrder Val="NORMAL"/>
+      </File>
+      <File Name="sim\led_subsystem.protoinst">
+        <Properties IsEditable="false" IsVisible="true" IsNetlistSimulation="false" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SIMULATION"/>
+        <ProcessingOrder Val="NORMAL"/>
+      </File>
+      <File Name="led_subsystem.vho" Type="VhdlTemplate">
+        <Properties IsEditable="false" IsVisible="true" IsNetlistSimulation="false" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
+        <Library Name="xil_defaultlib"/>
+        <ProcessingOrder Val="NORMAL"/>
+      </File>
+      <File Name="led_subsystem.veo" Type="VTemplate">
+        <Properties IsEditable="false" IsVisible="true" IsNetlistSimulation="false" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
+        <Library Name="xil_defaultlib"/>
+        <ProcessingOrder Val="NORMAL"/>
+      </File>
+      <File Name="led_subsystem_sv.sveo" Type="SystemVerilogTemplate">
+        <Properties IsEditable="false" IsVisible="true" IsNetlistSimulation="false" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
+        <Library Name="xil_defaultlib"/>
+        <ProcessingOrder Val="NORMAL"/>
+      </File>
+    </FileCollection>
+  </CompositeFile>
+</Root>
