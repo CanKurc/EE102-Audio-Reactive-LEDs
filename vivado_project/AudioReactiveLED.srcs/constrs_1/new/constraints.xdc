@@ -1,5 +1,5 @@
 # =============================================================================
-# Clock (100 MHz oscillator, Pin W5)
+# Clock (100 MHz oscillator)
 # =============================================================================
 set_property PACKAGE_PIN W5 [get_ports clk]
 set_property IOSTANDARD LVCMOS33 [get_ports clk]
