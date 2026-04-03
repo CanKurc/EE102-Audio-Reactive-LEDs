@@ -2,7 +2,7 @@
 //Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2025.2 (win64) Build 6299465 Fri Nov 14 19:35:11 GMT 2025
-//Date        : Fri Apr  3 12:50:17 2026
+//Date        : Fri Apr  3 18:32:04 2026
 //Host        : CANKUR8A4F running 64-bit major release  (build 9200)
 //Command     : generate_target seven_segment_display.bd
 //Design      : seven_segment_display
@@ -69,8 +69,8 @@ module seven_segment_display
         .vn_in(1'b0),
         .vp_in(1'b0));
   seven_segment_display_xlconcat_0_0 xlconcat_0
-       (.In0(xlconstant_3_dout),
-        .In1(xlslice_0_Dout),
+       (.In0(xlslice_0_Dout),
+        .In1(xlconstant_3_dout),
         .dout(xlconcat_0_dout));
   seven_segment_display_xlconstant_0_0 xlconstant_0
        (.dout(xlconstant_0_dout));

@@ -1,7 +1,7 @@
 {
    "ActiveEmotionalView":"Default View",
-   "Default View_ScaleFactor":"1.30146",
-   "Default View_TopLeft":"-131,-161",
+   "Default View_ScaleFactor":"1.80249",
+   "Default View_TopLeft":"-119,3",
    "ExpandedHierarchyInLayout":"",
    "guistr":"# # String gsaved with Nlview 7.8.0 2024-04-26 e1825d835c VDI=44 GEI=38 GUI=JA:21.0
 #  -string -flagsOSRD
@@ -34,10 +34,10 @@ preplace netloc reset_in_0_1 1 0 2 20J 420 NJ
 preplace netloc vauxn6_0_1 1 0 2 NJ 350 230J
 preplace netloc vauxp6_0_1 1 0 2 NJ 380 NJ
 preplace netloc xadc_wiz_0_do_out 1 0 2 30 220 NJ
-preplace netloc xlconstant_3_dout 1 1 1 230J 560n
-preplace netloc xlslice_0_Dout 1 1 1 NJ 660
 preplace netloc xlconcat_0_dout 1 2 1 N 650
 preplace netloc xadc_wiz_0_eoc_out 1 1 2 250 80 530
+preplace netloc xlconstant_3_dout 1 1 1 250 560n
+preplace netloc xlslice_0_Dout 1 1 1 230 640n
 levelinfo -pg 1 0 130 390 670 940 1090
 pagesize -pg 1 -db -bbox -sgen -120 0 1230 730
 "

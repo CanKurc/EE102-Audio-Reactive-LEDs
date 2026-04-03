@@ -61,8 +61,8 @@ seven_segment_display_xlconcat_0_0_sc::seven_segment_display_xlconcat_0_0_sc(con
 
   // initialize module
     xsc::common_cpp::properties model_param_props;
-    model_param_props.addLong("IN0_WIDTH", "4");
-    model_param_props.addLong("IN1_WIDTH", "12");
+    model_param_props.addLong("IN0_WIDTH", "12");
+    model_param_props.addLong("IN1_WIDTH", "4");
     model_param_props.addLong("IN2_WIDTH", "1");
     model_param_props.addLong("IN3_WIDTH", "1");
     model_param_props.addLong("IN4_WIDTH", "1");

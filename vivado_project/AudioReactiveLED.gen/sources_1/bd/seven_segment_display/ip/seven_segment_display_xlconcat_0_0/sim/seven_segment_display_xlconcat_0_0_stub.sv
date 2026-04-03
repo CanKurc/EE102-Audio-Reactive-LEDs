@@ -66,8 +66,8 @@ typedef bit bit_as_bool;
 
 (* SC_MODULE_EXPORT *)
 module seven_segment_display_xlconcat_0_0 (
-  input bit [3 : 0] In0,
-  input bit [11 : 0] In1,
+  input bit [11 : 0] In0,
+  input bit [3 : 0] In1,
   output bit [15 : 0] dout
 );
 endmodule
@@ -78,8 +78,8 @@ endmodule
 module seven_segment_display_xlconcat_0_0 (In0,In1,dout)
 (* integer foreign = "SystemC";
 *);
-  input bit [3 : 0] In0;
-  input bit [11 : 0] In1;
+  input bit [11 : 0] In0;
+  input bit [3 : 0] In1;
   output wire [15 : 0] dout;
 endmodule
 `endif

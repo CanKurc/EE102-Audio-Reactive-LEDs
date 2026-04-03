@@ -301,10 +301,10 @@
         "has_run_ip_tcl": "true",
         "parameters": {
           "IN0_WIDTH": {
-            "value": "4"
+            "value": "12"
           },
           "IN1_WIDTH": {
-            "value": "12"
+            "value": "4"
           }
         }
       },
@@ -415,13 +415,13 @@
       "xlconstant_3_dout": {
         "ports": [
           "xlconstant_3/dout",
-          "xlconcat_0/In0"
+          "xlconcat_0/In1"
         ]
       },
       "xlslice_0_Dout": {
         "ports": [
           "xlslice_0/Dout",
-          "xlconcat_0/In1"
+          "xlconcat_0/In0"
         ]
       }
     }

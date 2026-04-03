@@ -59,13 +59,13 @@ module seven_segment_display_xlconcat_0_0 (
   dout
 );
 
-input wire [3 : 0] In0;
-input wire [11 : 0] In1;
+input wire [11 : 0] In0;
+input wire [3 : 0] In1;
 output wire [15 : 0] dout;
 
   xlconcat_v2_1_7_xlconcat #(
-    .IN0_WIDTH(4),
-    .IN1_WIDTH(12),
+    .IN0_WIDTH(12),
+    .IN1_WIDTH(4),
     .IN2_WIDTH(1),
     .IN3_WIDTH(1),
     .IN4_WIDTH(1),

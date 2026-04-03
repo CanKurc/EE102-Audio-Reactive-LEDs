@@ -13,9 +13,9 @@
 #include <systemc.h>
 #include "properties.h"
 
-#define IN0_WIDTH 4
-#define IN0_WIDTH 4
-#define IN1_WIDTH 12
+#define IN0_WIDTH 12
+#define IN0_WIDTH 12
+#define IN1_WIDTH 4
 #define IN2_WIDTH 1
 #define IN3_WIDTH 1
 #define IN4_WIDTH 1

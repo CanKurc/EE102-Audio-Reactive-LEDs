@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Fri Apr  3 12:50:20 2026" VIVADOVERSION="2025.2">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Fri Apr  3 18:32:05 2026" VIVADOVERSION="2025.2">
 
   <SYSTEMINFO ARCH="artix7" DEVICE="7a35t" NAME="seven_segment_display" PACKAGE="cpg236" SPEEDGRADE="-1"/>
 
@@ -458,7 +458,7 @@
     <MODULE COREREVISION="7" FULLNAME="/xlconcat_0" HWVERSION="2.1" INSTANCE="xlconcat_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlconcat" VLNV="xilinx.com:ip:xlconcat:2.1">
       <DOCUMENTS/>
       <PARAMETERS>
-        <PARAMETER NAME="IN0_WIDTH" VALUE="4"/>
+        <PARAMETER NAME="IN0_WIDTH" VALUE="12"/>
         <PARAMETER NAME="IN100_WIDTH" VALUE="1"/>
         <PARAMETER NAME="IN101_WIDTH" VALUE="1"/>
         <PARAMETER NAME="IN102_WIDTH" VALUE="1"/>
@@ -497,7 +497,7 @@
         <PARAMETER NAME="IN17_WIDTH" VALUE="1"/>
         <PARAMETER NAME="IN18_WIDTH" VALUE="1"/>
         <PARAMETER NAME="IN19_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="IN1_WIDTH" VALUE="12"/>
+        <PARAMETER NAME="IN1_WIDTH" VALUE="4"/>
         <PARAMETER NAME="IN20_WIDTH" VALUE="1"/>
         <PARAMETER NAME="IN21_WIDTH" VALUE="1"/>
         <PARAMETER NAME="IN22_WIDTH" VALUE="1"/>
@@ -592,14 +592,14 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" LEFT="3" NAME="In0" RIGHT="0" SIGIS="undef" SIGNAME="xlconstant_3_dout">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="xlconstant_3" PORT="dout"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="11" NAME="In1" RIGHT="0" SIGIS="undef" SIGNAME="xlslice_0_Dout">
+        <PORT DIR="I" LEFT="11" NAME="In0" RIGHT="0" SIGIS="undef" SIGNAME="xlslice_0_Dout">
           <CONNECTIONS>
             <CONNECTION INSTANCE="xlslice_0" PORT="Dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="3" NAME="In1" RIGHT="0" SIGIS="undef" SIGNAME="xlconstant_3_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="xlconstant_3" PORT="dout"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="15" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="xlconcat_0_dout">
@@ -672,7 +672,7 @@
       <PORTS>
         <PORT DIR="O" LEFT="3" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="xlconstant_3_dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="xlconcat_0" PORT="In0"/>
+            <CONNECTION INSTANCE="xlconcat_0" PORT="In1"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -696,7 +696,7 @@
         </PORT>
         <PORT DIR="O" LEFT="11" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="xlslice_0_Dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="xlconcat_0" PORT="In1"/>
+            <CONNECTION INSTANCE="xlconcat_0" PORT="In0"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
