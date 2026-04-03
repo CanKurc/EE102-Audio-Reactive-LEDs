@@ -10,8 +10,6 @@
 * **Theoretical Transfer Function:** Based on the 3.3V supply from the Basys 3, the maximum theoretical peak voltage was calculated as:
   $$V_{out} = V_{in} \times \frac{R_2}{R_1 + R_2} = 3.3V \times \frac{4700}{10000 + 4700} \approx 1.05V$$
 
-
-
 **Testing & Validation:**
 * Conducted live testing using an ANENG AN8205C digital multimeter set to DC voltage.
 * **Idle State:** Measured a steady 0.52V DC bias at the center tap in a quiet environment.
@@ -20,6 +18,8 @@
 
 **Final Integration:**
 * The safe center tap was successfully routed via jumper wire to the Basys 3 JXADC Header, Pin 1, which corresponds to the internal `VAUX6` analog channel.
+
+---
 
 ## Date: March 25, 2026 - Issue #2 Completed (High-Current Power Delivery & System Grounding)
 
@@ -39,6 +39,7 @@
 **Final Integration:**
 * A dedicated common ground jumper wire was successfully routed from the Mervesan `-V` terminal to the Basys 3 PMOD Header JA, Pin 5, establishing a shared 0V reference plane for the logic signals.
 
+---
 
 ## Date: March 25, 2026 - Issue #3 Completed (WS2812B Signal Integrity)
 
@@ -57,11 +58,7 @@
 **Final Integration:**
 * A standard jumper pin was soldered to the input side of $R_s$ and routed directly to the Basys 3 PMOD Header JA, Pin 1, preparing the hardware to receive the 3.3V logic signal from the FPGA.
 
-
-
-
-
-
+---
 
 ## Date: March 31, 2026 - Issue #5 In Progress (VHDL Physical Layer Protocol Synthesis)
 
@@ -85,6 +82,7 @@
 
 **Current Status:** The FSM and 24-bit serialization logic are verified via the white light test. Issue #5 remains "In Progress" as dynamic color control via external inputs has not yet been integrated.
 
+---
 
 ## Date: March 31, 2026 - Issue #5 Continued (Reference Architecture: Dynamic Color & Brightness Control)
 
@@ -102,6 +100,7 @@
 
 **Current Status:** Issue #5 remains "In Progress". The next step is a from-scratch reimplementation, built incrementally, guided by the course syllabus material and the author's existing VHDL knowledge.
 
+---
 
 ## Date: April 3, 2026 - Issue #5 Completed (Dynamic Color Control & Modular Refactoring)
 
@@ -115,30 +114,47 @@
 * **Counter Optimization:** The combinational `bit_count mod 24` operation was replaced with a dedicated `bit_in_pixel` counter (0→23, rollover), eliminating an expensive hardware divider.
 * **Constraints Update:** Pin mappings were added for SW0–SW7 (V17, V16, W16, W17, W15, V15, W14, W13) and the reset button BTNC (U18).
 
-<<<<<<< HEAD
 **Testing & Validation:**
 * All 16 colors were verified on the physical 60-LED strip. Some colors require fine-tuning of their GRB hex values (noted for later adjustment in `color_lut.vhd`).
 * All 8 brightness levels were verified from full intensity to barely visible.
 * The on/off switch and center-button reset were confirmed operational.
 
 **Modular Refactoring:**
-
 The monolithic `led_controller.vhd` (170 lines) was split into four purpose-built modules to enable clean Phase 2 integration:
 
 * **`ws2812b_driver.vhd`** — Pure physical layer. Takes a 24-bit `color_in` and `enable` signal, bit-bangs the WS2812B protocol to 60 LEDs. Contains the two-state FSM (RESET_STATE/SEND_STATE), timing constants, and all three counters. A `frame_done` output signal was added that pulses once per frame (~435 Hz), providing a timing reference for Phase 2's fade-out and breathing effects. This module never changes between phases.
-
 * **`color_lut.vhd`** — Pure combinational color database. Takes a 4-bit `color_index` and 3-bit `brightness_level`, outputs a brightness-scaled 24-bit GRB color. Contains the 16-color constant array and the `scale_brightness` function. Shared by both Phase 1 and Phase 2 without modification.
-
 * **`manual_color_select.vhd`** — Phase 1 switch reader. Passes physical switch values (SW0–SW7) through to `color_index`, `brightness_level`, and `enable` outputs. Defines the interface contract for Phase 2: any module producing these three output signals (`color_index(3:0)`, `brightness_level(2:0)`, `enable`) can replace this module. In Phase 2, `beat_color_auto.vhd` will have identical output ports but derive values from beat detection, fade-out counters, and breathing logic.
-
 * **`top_module.vhd`** — Structural wiring only. Instantiates all sub-modules and connects them via internal signals. Contains zero logic. The Phase 2 swap requires changing only one component instantiation (replacing `manual_color_select` with `beat_color_auto`).
 
 **Design Decision — Modularity for Phase 2:**
-
 The key interface boundary is the three signals between the "brain" module and `color_lut`: `color_index(3:0)`, `brightness_level(2:0)`, and `enable`. Phase 2 additions (moving average filter, hysteresis beat detector, color automation FSM with fade-out, cycling, and breathing) all connect upstream of this boundary without modifying any existing module.
 
 **Updated Proposal:**
-
 The project proposal was revised on April 2, 2026 to reflect the updated Phase 2 plan. New additions include: hysteresis-based dual-threshold beat detection (preventing flickering), beat-triggered color cycling through the LUT, smooth brightness fade-out after each beat pulse, and inter-beat breathing mode (triangle-wave brightness ramp when no beats are detected). GitHub Issues #8 and #9 were updated to reflect this scope.
 
 **Current Status:** Issue #5 is closed. The modular LED control system is fully operational with switch-based color and brightness control. Next steps: Issue #4 (XADC microphone integration) and Issue #6 (Phase 1 top-level integration with seven-segment display).
+
+---
+
+## Date: April 3, 2026 - Issue #4 & Issue #6 Completed (Phase 1 Top-Level Integration via Block Design)
+
+**Objective:** Integrate the modular LED subsystem and the XADC audio front-end into a single System-on-Chip (SoC) architecture using Vivado IP Integrator, and validate the physical hardware routing for the Phase 1 lab demo.
+
+**System Architecture & Block Design Integration:**
+* **Module Deprecation:** The handwritten `top_module.vhd` was permanently removed from the project hierarchy. This action was taken to prevent synthesis conflicts and enforce the Vivado Block Design as the absolute top of the project hierarchy.
+* **Nested Block Design Construction:** A modular IP Integrator architecture was implemented:
+    * **`seven_segment_display`:** The XADC Wizard IP (configured for Continuous DRP, VAUX6) was integrated with the Lab 5 multiplexing modules. Constants were utilized to drive the DRP address to `0x16`.
+    * **`led_subsystem`:** The Phase 1 switch reader, the color LUT, and the WS2812B physical driver RTL modules were interconnected.
+    * **`master_design`:** Both subsystems were instantiated into a master wrapper. A shared 100MHz clock tree (`clk_0_0`) and a global reset (`reset_0_0`) were routed to both subsystems to ensure strict synchronous operation and eliminate clock domain crossing (CDC) violations within Phase 1 logic.
+* **Wrapper Generation:** An HDL wrapper was auto-generated by the Vivado toolchain to serve as the definitive final synthesis target.
+
+**Constraint Mapping & Pin Assignments:**
+* **Port Name Reconciliation:** Due to the nested wrapper hierarchy, the Vivado auto-generator appended `_0_0` suffixes to all external ports. The master `.xdc` file was entirely overhauled to match these specific generated names (e.g., `clk_0_0`, `led_data_out_0_0`), preventing critical implementation failures.
+* **Diagnostic Mapping:** The `frame_done_0_0` output signal from the WS2812B driver was successfully mapped to the Basys 3 onboard LED (U16) to provide a visual hardware diagnostic of the FSM's frame refresh rate.
+
+**Hardware Front-End Wiring & Isolation:**
+* **Power Plane Separation:** To mitigate the risk of accidental short circuits and prevent electrical crosstalk with the high-speed 800kHz digital LED data line residing on PMOD JA, the power routing for the MAX4466 microphone was relocated. The 3.3V VCC and Ground connections were sourced from PMOD JB (Pins 6 and 5), exploiting the shared electrical planes of the Basys 3 board.
+* **Differential Analog Routing:** The stepped-down analog signal from the 10kΩ/4.7kΩ voltage divider's center tap was routed to JXADC Pin 1 (`vauxp6`). Crucially, a dedicated ground reference was routed to JXADC Pin 7 (`vauxn6`) to prevent the XADC's differential math engine from floating, ensuring accurate internal digital conversion.
+
+**Current Status:** Issues #4 and #6 are officially CLOSED. The Phase 1 milestone architecture is locked and fully synthesized. The system successfully samples real-time audio volume via the XADC (displayed on the seven-segment display) while permitting simultaneous, independent switch-based control of the WS2812B LED strip. The project is now ready for Phase 2 (Digital Signal Processing).
