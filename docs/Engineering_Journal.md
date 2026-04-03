@@ -142,6 +142,3 @@ The key interface boundary is the three signals between the "brain" module and `
 The project proposal was revised on April 2, 2026 to reflect the updated Phase 2 plan. New additions include: hysteresis-based dual-threshold beat detection (preventing flickering), beat-triggered color cycling through the LUT, smooth brightness fade-out after each beat pulse, and inter-beat breathing mode (triangle-wave brightness ramp when no beats are detected). GitHub Issues #8 and #9 were updated to reflect this scope.
 
 **Current Status:** Issue #5 is closed. The modular LED control system is fully operational with switch-based color and brightness control. Next steps: Issue #4 (XADC microphone integration) and Issue #6 (Phase 1 top-level integration with seven-segment display).
-=======
-**Current Status:** Issue #5 remains "In Progress". The next step is a from-scratch reimplementation, built incrementally, guided by the course syllabus material and the author's existing VHDL knowledge.
->>>>>>> 98e9cde748029e6316ff535d3da4b16f173b56dd
