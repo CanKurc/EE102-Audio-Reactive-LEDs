@@ -54,12 +54,13 @@
 COMPONENT led_subsystem
   PORT (
     clk_0 : IN STD_LOGIC;
-    frame_done_0 : OUT STD_LOGIC;
     led_data_out_0 : OUT STD_LOGIC;
     reset_0 : IN STD_LOGIC;
-    color_sel_0 : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
-    brightness_0 : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
-    led_enable_0 : IN STD_LOGIC
+    led_enable_0 : IN STD_LOGIC;
+    audio_in_0 : IN STD_LOGIC_VECTOR(11 DOWNTO 0);
+    sample_valid_0 : IN STD_LOGIC;
+    thresh_high_0 : IN STD_LOGIC_VECTOR(11 DOWNTO 0);
+    thresh_low_0 : IN STD_LOGIC_VECTOR(11 DOWNTO 0)
   );
 END COMPONENT;
 -- COMP_TAG_END ------  End cut for COMPONENT Declaration  ------
@@ -71,12 +72,13 @@ END COMPONENT;
 your_instance_name : led_subsystem
   PORT MAP (
     clk_0 => clk_0,
-    frame_done_0 => frame_done_0,
     led_data_out_0 => led_data_out_0,
     reset_0 => reset_0,
-    color_sel_0 => color_sel_0,
-    brightness_0 => brightness_0,
-    led_enable_0 => led_enable_0
+    led_enable_0 => led_enable_0,
+    audio_in_0 => audio_in_0,
+    sample_valid_0 => sample_valid_0,
+    thresh_high_0 => thresh_high_0,
+    thresh_low_0 => thresh_low_0
   );
 -- INST_TAG_END ------  End cut for INSTANTIATION Template  ------
 

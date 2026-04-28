@@ -1,4 +1,9 @@
 # =============================================================================
+# EE-102 Audio-Reactive LED Sequencer -- Phase 2 Constraints
+# Basys 3 (Artix-7 XC7A35TCPG236-1)
+# =============================================================================
+
+# =============================================================================
 # Clock (100 MHz oscillator)
 # =============================================================================
 set_property PACKAGE_PIN W5 [get_ports clk_0_0]
@@ -18,42 +23,52 @@ set_property PACKAGE_PIN J1 [get_ports led_data_out_0_0]
 set_property IOSTANDARD LVCMOS33 [get_ports led_data_out_0_0]
 
 # =============================================================================
-# Diagnostic Onboard LED (LED 0) -> Mapped to frame_done
+# Threshold High Switches (SW0 - SW5) -> hysteresis_detector thresh_high upper bits
+# Lower 6 bits are tied to zero in the Block Design via Concat + Constant blocks
 # =============================================================================
-set_property PACKAGE_PIN U16 [get_ports frame_done_0_0]
-set_property IOSTANDARD LVCMOS33 [get_ports frame_done_0_0]
+set_property PACKAGE_PIN V17 [get_ports {thres_high_sw[0]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {thres_high_sw[0]}]
 
-# =============================================================================
-# Color Selection Switches (SW0 - SW3)
-# =============================================================================
-set_property PACKAGE_PIN V17 [get_ports {color_sel_0_0[0]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {color_sel_0_0[0]}]
+set_property PACKAGE_PIN V16 [get_ports {thres_high_sw[1]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {thres_high_sw[1]}]
 
-set_property PACKAGE_PIN V16 [get_ports {color_sel_0_0[1]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {color_sel_0_0[1]}]
+set_property PACKAGE_PIN W16 [get_ports {thres_high_sw[2]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {thres_high_sw[2]}]
 
-set_property PACKAGE_PIN W16 [get_ports {color_sel_0_0[2]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {color_sel_0_0[2]}]
+set_property PACKAGE_PIN W17 [get_ports {thres_high_sw[3]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {thres_high_sw[3]}]
 
-set_property PACKAGE_PIN W17 [get_ports {color_sel_0_0[3]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {color_sel_0_0[3]}]
+set_property PACKAGE_PIN W15 [get_ports {thres_high_sw[4]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {thres_high_sw[4]}]
 
-# =============================================================================
-# Brightness Switches (SW4 - SW6)
-# =============================================================================
-set_property PACKAGE_PIN W15 [get_ports {brightness_0_0[0]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {brightness_0_0[0]}]
-
-set_property PACKAGE_PIN V15 [get_ports {brightness_0_0[1]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {brightness_0_0[1]}]
-
-set_property PACKAGE_PIN W14 [get_ports {brightness_0_0[2]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {brightness_0_0[2]}]
+set_property PACKAGE_PIN V15 [get_ports {thres_high_sw[5]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {thres_high_sw[5]}]
 
 # =============================================================================
-# LED Enable / On-Off Switch (SW7)
+# Threshold Low Switches (SW6 - SW11) -> hysteresis_detector thresh_low upper bits
 # =============================================================================
-set_property PACKAGE_PIN W13 [get_ports led_enable_0_0]
+set_property PACKAGE_PIN W14 [get_ports {thres_low_sw[0]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {thres_low_sw[0]}]
+
+set_property PACKAGE_PIN W13 [get_ports {thres_low_sw[1]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {thres_low_sw[1]}]
+
+set_property PACKAGE_PIN V2 [get_ports {thres_low_sw[2]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {thres_low_sw[2]}]
+
+set_property PACKAGE_PIN T3 [get_ports {thres_low_sw[3]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {thres_low_sw[3]}]
+
+set_property PACKAGE_PIN T2 [get_ports {thres_low_sw[4]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {thres_low_sw[4]}]
+
+set_property PACKAGE_PIN R3 [get_ports {thres_low_sw[5]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {thres_low_sw[5]}]
+
+# =============================================================================
+# LED Enable Switch (SW15 - leftmost switch)
+# =============================================================================
+set_property PACKAGE_PIN R2 [get_ports led_enable_0_0]
 set_property IOSTANDARD LVCMOS33 [get_ports led_enable_0_0]
 
 # =============================================================================
@@ -98,8 +113,6 @@ set_property IOSTANDARD LVCMOS33 [get_ports {an_0_0[3]}]
 # =============================================================================
 # XADC Analog Inputs (VAUX6)
 # =============================================================================
-# Note: Vivado usually infers these directly from the IP, but it is best 
-# practice to explicitly constrain them to prevent placement errors.
 set_property PACKAGE_PIN A14 [get_ports vauxp6_0_0]
 set_property IOSTANDARD LVCMOS33 [get_ports vauxp6_0_0]
 

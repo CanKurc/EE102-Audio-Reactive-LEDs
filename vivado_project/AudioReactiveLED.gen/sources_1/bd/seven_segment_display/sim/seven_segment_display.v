@@ -2,7 +2,7 @@
 //Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2025.2 (win64) Build 6299465 Fri Nov 14 19:35:11 GMT 2025
-//Date        : Fri Apr  3 18:32:04 2026
+//Date        : Thu Apr 23 22:16:52 2026
 //Host        : CANKUR8A4F running 64-bit major release  (build 9200)
 //Command     : generate_target seven_segment_display.bd
 //Design      : seven_segment_display
@@ -13,34 +13,38 @@
 (* CORE_GENERATION_INFO = "seven_segment_display,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=seven_segment_display,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=11,numReposBlks=11,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=4,numPkgbdBlks=0,bdsource=USER,synth_mode=Hierarchical}" *) (* HW_HANDOFF = "seven_segment_display.hwdef" *) 
 module seven_segment_display
    (an_0,
+    audio_out,
     clk_0,
     reset_in_0,
+    sample_valid_output,
     seg_out_0,
     vauxn6_0,
     vauxp6_0);
   output [3:0]an_0;
+  output [11:0]audio_out;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.CLK_0 CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.CLK_0, CLK_DOMAIN seven_segment_display_clk_0, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, INSERT_VIP 0, PHASE 0.0" *) input clk_0;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 RST.RESET_IN_0 RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME RST.RESET_IN_0, INSERT_VIP 0, POLARITY ACTIVE_HIGH" *) input reset_in_0;
+  output sample_valid_output;
   output [6:0]seg_out_0;
   input vauxn6_0;
   input vauxp6_0;
 
   wire [3:0]an_0;
+  wire [11:0]audio_out;
   wire clk_0;
   wire [1:0]clock_divider_0_digit_select;
   wire [3:0]mux_4to1_0_digit_out;
   wire reset_in_0;
+  wire sample_valid_output;
   wire [6:0]seg_out_0;
   wire vauxn6_0;
   wire vauxp6_0;
   wire [15:0]xadc_wiz_0_do_out;
-  wire xadc_wiz_0_eoc_out;
   wire [15:0]xlconcat_0_dout;
   wire [6:0]xlconstant_0_dout;
   wire [15:0]xlconstant_1_dout;
   wire [0:0]xlconstant_2_dout;
   wire [3:0]xlconstant_3_dout;
-  wire [11:0]xlslice_0_Dout;
 
   seven_segment_display_anode_decoder_0_0 anode_decoder_0
        (.an(an_0),
@@ -58,18 +62,18 @@ module seven_segment_display
   seven_segment_display_xadc_wiz_0_0 xadc_wiz_0
        (.daddr_in(xlconstant_0_dout),
         .dclk_in(clk_0),
-        .den_in(xadc_wiz_0_eoc_out),
+        .den_in(sample_valid_output),
         .di_in(xlconstant_1_dout),
         .do_out(xadc_wiz_0_do_out),
         .dwe_in(xlconstant_2_dout),
-        .eoc_out(xadc_wiz_0_eoc_out),
+        .eoc_out(sample_valid_output),
         .reset_in(reset_in_0),
         .vauxn6(vauxn6_0),
         .vauxp6(vauxp6_0),
         .vn_in(1'b0),
         .vp_in(1'b0));
   seven_segment_display_xlconcat_0_0 xlconcat_0
-       (.In0(xlslice_0_Dout),
+       (.In0(audio_out),
         .In1(xlconstant_3_dout),
         .dout(xlconcat_0_dout));
   seven_segment_display_xlconstant_0_0 xlconstant_0
@@ -82,5 +86,5 @@ module seven_segment_display
        (.dout(xlconstant_3_dout));
   seven_segment_display_xlslice_0_0 xlslice_0
        (.Din(xadc_wiz_0_do_out),
-        .Dout(xlslice_0_Dout));
+        .Dout(audio_out));
 endmodule

@@ -58,7 +58,9 @@ COMPONENT seven_segment_display
     seg_out_0 : OUT STD_LOGIC_VECTOR(6 DOWNTO 0);
     reset_in_0 : IN STD_LOGIC;
     vauxn6_0 : IN STD_LOGIC;
-    vauxp6_0 : IN STD_LOGIC
+    vauxp6_0 : IN STD_LOGIC;
+    audio_out : OUT STD_LOGIC_VECTOR(11 DOWNTO 0);
+    sample_valid_output : OUT STD_LOGIC
   );
 END COMPONENT;
 -- COMP_TAG_END ------  End cut for COMPONENT Declaration  ------
@@ -74,7 +76,9 @@ your_instance_name : seven_segment_display
     seg_out_0 => seg_out_0,
     reset_in_0 => reset_in_0,
     vauxn6_0 => vauxn6_0,
-    vauxp6_0 => vauxp6_0
+    vauxp6_0 => vauxp6_0,
+    audio_out => audio_out,
+    sample_valid_output => sample_valid_output
   );
 -- INST_TAG_END ------  End cut for INSTANTIATION Template  ------
 

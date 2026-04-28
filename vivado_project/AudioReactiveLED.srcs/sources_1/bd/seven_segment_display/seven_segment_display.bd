@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x8DE1D25CC65ACBB2",
+      "boundary_crc": "0xB23DF3162859A931",
       "device": "xc7a35tcpg236-1",
       "gen_directory": "../../../../AudioReactiveLED.gen/sources_1/bd/seven_segment_display",
       "name": "seven_segment_display",
@@ -78,6 +78,14 @@
       },
       "vauxp6_0": {
         "direction": "I"
+      },
+      "audio_out": {
+        "direction": "O",
+        "left": "11",
+        "right": "0"
+      },
+      "sample_valid_output": {
+        "direction": "O"
       }
     },
     "components": {
@@ -385,7 +393,8 @@
       "xadc_wiz_0_eoc_out": {
         "ports": [
           "xadc_wiz_0/eoc_out",
-          "xadc_wiz_0/den_in"
+          "xadc_wiz_0/den_in",
+          "sample_valid_output"
         ]
       },
       "xlconcat_0_dout": {
@@ -421,7 +430,8 @@
       "xlslice_0_Dout": {
         "ports": [
           "xlslice_0/Dout",
-          "xlconcat_0/In0"
+          "xlconcat_0/In0",
+          "audio_out"
         ]
       }
     }

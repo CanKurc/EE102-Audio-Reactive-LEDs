@@ -1,0 +1,42 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"2.0",
+   "Default View_TopLeft":"-672,-318",
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.8.0 2024-04-26 e1825d835c VDI=44 GEI=38 GUI=JA:21.0
+#  -string -flagsOSRD
+preplace port port-id_clk_0_0 -pg 1 -lvl 0 -x -480 -y -180 -defaultsOSRD
+preplace port port-id_reset_0_0 -pg 1 -lvl 0 -x -480 -y -110 -defaultsOSRD
+preplace port port-id_vauxn6_0_0 -pg 1 -lvl 0 -x -480 -y 160 -defaultsOSRD
+preplace port port-id_vauxp6_0_0 -pg 1 -lvl 0 -x -480 -y 190 -defaultsOSRD
+preplace port port-id_led_enable_0_0 -pg 1 -lvl 0 -x -480 -y -140 -defaultsOSRD
+preplace port port-id_led_data_out_0_0 -pg 1 -lvl 4 -x 380 -y -120 -defaultsOSRD
+preplace portBus thres_high_sw -pg 1 -lvl 0 -x -480 -y -70 -defaultsOSRD
+preplace portBus thres_low_sw -pg 1 -lvl 0 -x -480 -y 30 -defaultsOSRD
+preplace portBus an_0_0 -pg 1 -lvl 4 -x 380 -y 160 -defaultsOSRD
+preplace portBus seg_out_0_0 -pg 1 -lvl 4 -x 380 -y 220 -defaultsOSRD
+preplace inst seven_segment_displa_0 -pg 1 -lvl 3 -x 190 -y 190 -defaultsOSRD
+preplace inst led_subsystem_wrapper_0 -pg 1 -lvl 3 -x 190 -y -120 -defaultsOSRD
+preplace inst xlconcat_0 -pg 1 -lvl 2 -x -110 -y -20 -defaultsOSRD
+preplace inst xlconstant_0 -pg 1 -lvl 1 -x -330 -y 40 -defaultsOSRD
+preplace inst xlconcat_1 -pg 1 -lvl 2 -x -110 -y 140 -defaultsOSRD
+preplace netloc clk_0_0_1 1 0 3 N -180 N -180 10
+preplace netloc reset_0_0_1 1 0 3 N -110 N -110 20
+preplace netloc vauxn6_0_0_1 1 0 3 -450 210 N 210 -10
+preplace netloc vauxp6_0_0_1 1 0 3 -460 220 N 220 N
+preplace netloc seven_segment_displa_0_audio_out 1 2 2 20 -250 350
+preplace netloc seven_segment_displa_0_sample_valid_output 1 2 2 30 -240 360
+preplace netloc thres_high_sw_1 1 0 2 N -70 -220
+preplace netloc thres_low_sw_1 1 0 2 -450 -20 -230
+preplace netloc xlconstant_0_dout 1 1 1 -210 -30n
+preplace netloc xlconcat_0_dout 1 2 1 -10 -80n
+preplace netloc xlconcat_1_dout 1 2 1 30 -60n
+preplace netloc led_enable_0_0_1 1 0 3 NJ -140 NJ -140 NJ
+preplace netloc led_subsystem_wrapper_0_led_data_out_0 1 3 1 N -120
+preplace netloc seven_segment_displa_0_an_0 1 3 1 N 160
+preplace netloc seven_segment_displa_0_seg_out_0 1 3 1 N 220
+levelinfo -pg 1 -480 -330 -110 190 380
+pagesize -pg 1 -db -bbox -sgen -650 -350 670 280
+"
+}
+

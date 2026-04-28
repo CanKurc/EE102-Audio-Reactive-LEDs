@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Fri Apr  3 18:32:05 2026" VIVADOVERSION="2025.2">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Thu Apr 23 22:16:53 2026" VIVADOVERSION="2025.2">
 
   <SYSTEMINFO ARCH="artix7" DEVICE="7a35t" NAME="seven_segment_display" PACKAGE="cpg236" SPEEDGRADE="-1"/>
 
@@ -7,6 +7,11 @@
     <PORT DIR="O" LEFT="3" NAME="an_0" RIGHT="0" SIGIS="undef" SIGNAME="anode_decoder_0_an">
       <CONNECTIONS>
         <CONNECTION INSTANCE="anode_decoder_0" PORT="an"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" LEFT="11" NAME="audio_out" RIGHT="0" SIGIS="undef" SIGNAME="xlslice_0_Dout">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="xlslice_0" PORT="Dout"/>
       </CONNECTIONS>
     </PORT>
     <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clk_0" SIGIS="clk" SIGNAME="External_Ports_clk_0">
@@ -18,6 +23,11 @@
     <PORT DIR="I" NAME="reset_in_0" POLARITY="ACTIVE_HIGH" SIGIS="rst" SIGNAME="External_Ports_reset_in_0">
       <CONNECTIONS>
         <CONNECTION INSTANCE="xadc_wiz_0" PORT="reset_in"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="sample_valid_output" SIGIS="undef" SIGNAME="xadc_wiz_0_eoc_out">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="xadc_wiz_0" PORT="eoc_out"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="O" LEFT="6" NAME="seg_out_0" RIGHT="0" SIGIS="undef" SIGNAME="binary_input_to_7_se_0_seg_out">
@@ -409,6 +419,7 @@
         <PORT DIR="O" NAME="eoc_out" SIGIS="undef" SIGNAME="xadc_wiz_0_eoc_out">
           <CONNECTIONS>
             <CONNECTION INSTANCE="xadc_wiz_0" PORT="den_in"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="sample_valid_output"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="eos_out" SIGIS="undef"/>
@@ -697,6 +708,7 @@
         <PORT DIR="O" LEFT="11" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="xlslice_0_Dout">
           <CONNECTIONS>
             <CONNECTION INSTANCE="xlconcat_0" PORT="In0"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="audio_out"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>

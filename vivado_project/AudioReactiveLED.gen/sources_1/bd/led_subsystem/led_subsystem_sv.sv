@@ -56,27 +56,30 @@ module led_subsystem_sv (
   (* X_INTERFACE_IGNORE = "true" *)
   input wire clk_0,
   (* X_INTERFACE_IGNORE = "true" *)
-  output wire frame_done_0,
-  (* X_INTERFACE_IGNORE = "true" *)
   output wire led_data_out_0,
   (* X_INTERFACE_IGNORE = "true" *)
   input wire reset_0,
   (* X_INTERFACE_IGNORE = "true" *)
-  input wire [3:0] color_sel_0,
+  input wire led_enable_0,
   (* X_INTERFACE_IGNORE = "true" *)
-  input wire [2:0] brightness_0,
+  input wire [11:0] audio_in_0,
   (* X_INTERFACE_IGNORE = "true" *)
-  input wire led_enable_0
+  input wire sample_valid_0,
+  (* X_INTERFACE_IGNORE = "true" *)
+  input wire [11:0] thresh_high_0,
+  (* X_INTERFACE_IGNORE = "true" *)
+  input wire [11:0] thresh_low_0
 );
 
   led_subsystem inst (
     .clk_0(clk_0),
-    .frame_done_0(frame_done_0),
     .led_data_out_0(led_data_out_0),
     .reset_0(reset_0),
-    .color_sel_0(color_sel_0),
-    .brightness_0(brightness_0),
-    .led_enable_0(led_enable_0)
+    .led_enable_0(led_enable_0),
+    .audio_in_0(audio_in_0),
+    .sample_valid_0(sample_valid_0),
+    .thresh_high_0(thresh_high_0),
+    .thresh_low_0(thresh_low_0)
   );
 
 endmodule

@@ -64,7 +64,11 @@ module seven_segment_display_sv (
   (* X_INTERFACE_IGNORE = "true" *)
   input wire vauxn6_0,
   (* X_INTERFACE_IGNORE = "true" *)
-  input wire vauxp6_0
+  input wire vauxp6_0,
+  (* X_INTERFACE_IGNORE = "true" *)
+  output wire [11:0] audio_out,
+  (* X_INTERFACE_IGNORE = "true" *)
+  output wire sample_valid_output
 );
 
   seven_segment_display inst (
@@ -73,7 +77,9 @@ module seven_segment_display_sv (
     .seg_out_0(seg_out_0),
     .reset_in_0(reset_in_0),
     .vauxn6_0(vauxn6_0),
-    .vauxp6_0(vauxp6_0)
+    .vauxp6_0(vauxp6_0),
+    .audio_out(audio_out),
+    .sample_valid_output(sample_valid_output)
   );
 
 endmodule

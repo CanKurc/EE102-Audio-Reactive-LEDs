@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x30FCA531E4F5C5E",
+      "boundary_crc": "0x841A8CB23A5786DC",
       "device": "xc7a35tcpg236-1",
       "gen_directory": "../../../../AudioReactiveLED.gen/sources_1/bd/led_subsystem",
       "name": "led_subsystem",
@@ -13,7 +13,9 @@
     "design_tree": {
       "ws2812b_driver_0": "",
       "color_lut_0": "",
-      "manual_color_select_0": ""
+      "moving_average_0": "",
+      "hysteresis_detector_0": "",
+      "beat_color_auto_0": ""
     },
     "ports": {
       "clk_0": {
@@ -46,9 +48,6 @@
           }
         }
       },
-      "frame_done_0": {
-        "direction": "O"
-      },
       "led_data_out_0": {
         "direction": "O"
       },
@@ -66,18 +65,26 @@
           }
         }
       },
-      "color_sel_0": {
-        "direction": "I",
-        "left": "3",
-        "right": "0"
-      },
-      "brightness_0": {
-        "direction": "I",
-        "left": "2",
-        "right": "0"
-      },
       "led_enable_0": {
         "direction": "I"
+      },
+      "audio_in_0": {
+        "direction": "I",
+        "left": "11",
+        "right": "0"
+      },
+      "sample_valid_0": {
+        "direction": "I"
+      },
+      "thresh_high_0": {
+        "direction": "I",
+        "left": "11",
+        "right": "0"
+      },
+      "thresh_low_0": {
+        "direction": "I",
+        "left": "11",
+        "right": "0"
       }
     },
     "components": {
@@ -158,28 +165,139 @@
           }
         }
       },
-      "manual_color_select_0": {
-        "vlnv": "xilinx.com:module_ref:manual_color_select:1.0",
+      "moving_average_0": {
+        "vlnv": "xilinx.com:module_ref:moving_average:1.0",
         "ip_revision": "1",
-        "xci_name": "led_subsystem_manual_color_select_0_0",
-        "xci_path": "ip\\led_subsystem_manual_color_select_0_0\\led_subsystem_manual_color_select_0_0.xci",
-        "inst_hier_path": "manual_color_select_0",
+        "xci_name": "led_subsystem_moving_average_0_0",
+        "xci_path": "ip\\led_subsystem_moving_average_0_0\\led_subsystem_moving_average_0_0.xci",
+        "inst_hier_path": "moving_average_0",
         "has_run_ip_tcl": "true",
         "reference_info": {
           "ref_type": "hdl",
-          "ref_name": "manual_color_select",
+          "ref_name": "moving_average",
           "boundary_crc": "0x0"
         },
         "ports": {
-          "color_sel": {
+          "clk": {
+            "type": "clk",
             "direction": "I",
-            "left": "3",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "reset",
+                "value_src": "constant"
+              },
+              "CLK_DOMAIN": {
+                "value": "led_subsystem_clk_0",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "reset": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "sample_valid": {
+            "direction": "I"
+          },
+          "audio_in": {
+            "direction": "I",
+            "left": "11",
             "right": "0"
           },
-          "brightness": {
-            "direction": "I",
-            "left": "2",
+          "audio_filtered": {
+            "direction": "O",
+            "left": "11",
             "right": "0"
+          }
+        }
+      },
+      "hysteresis_detector_0": {
+        "vlnv": "xilinx.com:module_ref:hysteresis_detector:1.0",
+        "ip_revision": "1",
+        "xci_name": "led_subsystem_hysteresis_detector_0_0",
+        "xci_path": "ip\\led_subsystem_hysteresis_detector_0_0\\led_subsystem_hysteresis_detector_0_0.xci",
+        "inst_hier_path": "hysteresis_detector_0",
+        "has_run_ip_tcl": "true",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "hysteresis_detector",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "reset",
+                "value_src": "constant"
+              },
+              "CLK_DOMAIN": {
+                "value": "led_subsystem_clk_0",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "reset": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "audio_filtered": {
+            "direction": "I",
+            "left": "11",
+            "right": "0"
+          },
+          "thresh_high": {
+            "direction": "I",
+            "left": "11",
+            "right": "0"
+          },
+          "thresh_low": {
+            "direction": "I",
+            "left": "11",
+            "right": "0"
+          },
+          "beat_detected": {
+            "direction": "O"
+          }
+        }
+      },
+      "beat_color_auto_0": {
+        "vlnv": "xilinx.com:module_ref:beat_color_auto:1.0",
+        "ip_revision": "1",
+        "xci_name": "led_subsystem_beat_color_auto_0_0",
+        "xci_path": "ip\\led_subsystem_beat_color_auto_0_0\\led_subsystem_beat_color_auto_0_0.xci",
+        "inst_hier_path": "beat_color_auto_0",
+        "has_run_ip_tcl": "true",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "beat_color_auto",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "reset",
+                "value_src": "constant"
+              },
+              "CLK_DOMAIN": {
+                "value": "led_subsystem_clk_0",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "reset": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "beat_detected": {
+            "direction": "I"
+          },
+          "frame_done": {
+            "direction": "I"
           },
           "led_enable": {
             "direction": "I"
@@ -201,16 +319,37 @@
       }
     },
     "nets": {
-      "brightness_0_1": {
+      "audio_in_0_1": {
         "ports": [
-          "brightness_0",
-          "manual_color_select_0/brightness"
+          "audio_in_0",
+          "moving_average_0/audio_in"
+        ]
+      },
+      "beat_color_auto_0_brightness_level": {
+        "ports": [
+          "beat_color_auto_0/brightness_level",
+          "color_lut_0/brightness_level"
+        ]
+      },
+      "beat_color_auto_0_color_index": {
+        "ports": [
+          "beat_color_auto_0/color_index",
+          "color_lut_0/color_index"
+        ]
+      },
+      "beat_color_auto_0_enable": {
+        "ports": [
+          "beat_color_auto_0/enable",
+          "ws2812b_driver_0/enable"
         ]
       },
       "clk_0_1": {
         "ports": [
           "clk_0",
-          "ws2812b_driver_0/clk"
+          "ws2812b_driver_0/clk",
+          "hysteresis_detector_0/clk",
+          "moving_average_0/clk",
+          "beat_color_auto_0/clk"
         ]
       },
       "color_lut_0_color_out": {
@@ -219,46 +358,55 @@
           "ws2812b_driver_0/color_in"
         ]
       },
-      "color_sel_0_1": {
+      "hysteresis_detector_0_beat_detected": {
         "ports": [
-          "color_sel_0",
-          "manual_color_select_0/color_sel"
+          "hysteresis_detector_0/beat_detected",
+          "beat_color_auto_0/beat_detected"
         ]
       },
       "led_enable_0_1": {
         "ports": [
           "led_enable_0",
-          "manual_color_select_0/led_enable"
+          "beat_color_auto_0/led_enable"
         ]
       },
-      "manual_color_select_0_brightness_level": {
+      "moving_average_0_audio_filtered": {
         "ports": [
-          "manual_color_select_0/brightness_level",
-          "color_lut_0/brightness_level"
-        ]
-      },
-      "manual_color_select_0_color_index": {
-        "ports": [
-          "manual_color_select_0/color_index",
-          "color_lut_0/color_index"
-        ]
-      },
-      "manual_color_select_0_enable": {
-        "ports": [
-          "manual_color_select_0/enable",
-          "ws2812b_driver_0/enable"
+          "moving_average_0/audio_filtered",
+          "hysteresis_detector_0/audio_filtered"
         ]
       },
       "reset_0_1": {
         "ports": [
           "reset_0",
-          "ws2812b_driver_0/reset"
+          "ws2812b_driver_0/reset",
+          "hysteresis_detector_0/reset",
+          "moving_average_0/reset",
+          "beat_color_auto_0/reset"
+        ]
+      },
+      "sample_valid_0_1": {
+        "ports": [
+          "sample_valid_0",
+          "moving_average_0/sample_valid"
+        ]
+      },
+      "thresh_high_0_1": {
+        "ports": [
+          "thresh_high_0",
+          "hysteresis_detector_0/thresh_high"
+        ]
+      },
+      "thresh_low_0_1": {
+        "ports": [
+          "thresh_low_0",
+          "hysteresis_detector_0/thresh_low"
         ]
       },
       "ws2812b_driver_0_frame_done": {
         "ports": [
           "ws2812b_driver_0/frame_done",
-          "frame_done_0"
+          "beat_color_auto_0/frame_done"
         ]
       },
       "ws2812b_driver_0_led_data_out": {

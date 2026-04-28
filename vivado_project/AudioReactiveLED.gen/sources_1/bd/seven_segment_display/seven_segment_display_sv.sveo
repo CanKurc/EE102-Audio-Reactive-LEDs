@@ -71,7 +71,9 @@ seven_segment_display_sv your_instance_name (
   .seg_out_0(seg_out_0), // output wire [6:0] seg_out_0
   .reset_in_0(reset_in_0), // input wire reset_in_0
   .vauxn6_0(vauxn6_0), // input wire vauxn6_0
-  .vauxp6_0(vauxp6_0) // input wire vauxp6_0
+  .vauxp6_0(vauxp6_0), // input wire vauxp6_0
+  .audio_out(audio_out), // output wire [11:0] audio_out
+  .sample_valid_output(sample_valid_output) // output wire sample_valid_output
 );
 // INST_TAG_END ------  End cut for WRAPPER INSTANTIATION Template  ------
 

@@ -1,0 +1,321 @@
+{
+  "design": {
+    "design_info": {
+      "boundary_crc": "0xA811145424556B7E",
+      "device": "xc7a35tcpg236-1",
+      "gen_directory": "../../../../AudioReactiveLED.gen/sources_1/bd/master_wrapper",
+      "name": "master_wrapper",
+      "rev_ctrl_bd_flag": "RevCtrlBdOff",
+      "synth_flow_mode": "Hierarchical",
+      "tool_version": "2025.2",
+      "validated": "true"
+    },
+    "design_tree": {
+      "seven_segment_displa_0": "",
+      "led_subsystem_wrapper_0": "",
+      "xlconcat_0": "",
+      "xlconstant_0": "",
+      "xlconcat_1": ""
+    },
+    "ports": {
+      "clk_0_0": {
+        "direction": "I"
+      },
+      "reset_0_0": {
+        "type": "rst",
+        "direction": "I",
+        "parameters": {
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "POLARITY": {
+            "value": "ACTIVE_LOW",
+            "value_src": "default"
+          }
+        }
+      },
+      "vauxn6_0_0": {
+        "direction": "I"
+      },
+      "vauxp6_0_0": {
+        "direction": "I"
+      },
+      "thres_high_sw": {
+        "direction": "I",
+        "left": "5",
+        "right": "0"
+      },
+      "thres_low_sw": {
+        "direction": "I",
+        "left": "5",
+        "right": "0"
+      },
+      "led_enable_0_0": {
+        "direction": "I"
+      },
+      "led_data_out_0_0": {
+        "direction": "O"
+      },
+      "an_0_0": {
+        "direction": "O",
+        "left": "3",
+        "right": "0"
+      },
+      "seg_out_0_0": {
+        "direction": "O",
+        "left": "6",
+        "right": "0"
+      }
+    },
+    "components": {
+      "seven_segment_displa_0": {
+        "vlnv": "xilinx.com:module_ref:seven_segment_display_wrapper:1.0",
+        "ip_revision": "1",
+        "xci_name": "master_wrapper_seven_segment_displa_0_1",
+        "xci_path": "ip\\master_wrapper_seven_segment_displa_0_1\\master_wrapper_seven_segment_displa_0_1.xci",
+        "inst_hier_path": "seven_segment_displa_0",
+        "has_run_ip_tcl": "true",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "seven_segment_display_wrapper",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "an_0": {
+            "direction": "O",
+            "left": "3",
+            "right": "0"
+          },
+          "audio_out": {
+            "direction": "O",
+            "left": "11",
+            "right": "0"
+          },
+          "clk_0": {
+            "direction": "I"
+          },
+          "reset_in_0": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "sample_valid_output": {
+            "direction": "O"
+          },
+          "seg_out_0": {
+            "direction": "O",
+            "left": "6",
+            "right": "0"
+          },
+          "vauxn6_0": {
+            "direction": "I"
+          },
+          "vauxp6_0": {
+            "direction": "I"
+          }
+        }
+      },
+      "led_subsystem_wrapper_0": {
+        "vlnv": "xilinx.com:module_ref:led_subsystem_wrapper:1.0",
+        "ip_revision": "1",
+        "xci_name": "master_wrapper_led_subsystem_wrapper_0_1",
+        "xci_path": "ip\\master_wrapper_led_subsystem_wrapper_0_1\\master_wrapper_led_subsystem_wrapper_0_1.xci",
+        "inst_hier_path": "led_subsystem_wrapper_0",
+        "has_run_ip_tcl": "true",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "led_subsystem_wrapper",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "audio_in_0": {
+            "direction": "I",
+            "left": "11",
+            "right": "0"
+          },
+          "clk_0": {
+            "direction": "I"
+          },
+          "led_data_out_0": {
+            "direction": "O"
+          },
+          "led_enable_0": {
+            "direction": "I"
+          },
+          "reset_0": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "sample_valid_0": {
+            "direction": "I"
+          },
+          "thresh_high_0": {
+            "direction": "I",
+            "left": "11",
+            "right": "0",
+            "parameters": {
+              "PortWidth": {
+                "value": "12",
+                "value_src": "ip_prop"
+              }
+            }
+          },
+          "thresh_low_0": {
+            "direction": "I",
+            "left": "11",
+            "right": "0",
+            "parameters": {
+              "PortWidth": {
+                "value": "12",
+                "value_src": "ip_prop"
+              }
+            }
+          }
+        }
+      },
+      "xlconcat_0": {
+        "vlnv": "xilinx.com:ip:xlconcat:2.1",
+        "ip_revision": "7",
+        "xci_name": "master_wrapper_xlconcat_0_0",
+        "xci_path": "ip\\master_wrapper_xlconcat_0_0\\master_wrapper_xlconcat_0_0.xci",
+        "inst_hier_path": "xlconcat_0",
+        "has_run_ip_tcl": "true",
+        "parameters": {
+          "IN0_WIDTH": {
+            "value": "6"
+          },
+          "IN1_WIDTH": {
+            "value": "6"
+          }
+        }
+      },
+      "xlconstant_0": {
+        "vlnv": "xilinx.com:ip:xlconstant:1.1",
+        "ip_revision": "10",
+        "xci_name": "master_wrapper_xlconstant_0_0",
+        "xci_path": "ip\\master_wrapper_xlconstant_0_0\\master_wrapper_xlconstant_0_0.xci",
+        "inst_hier_path": "xlconstant_0",
+        "has_run_ip_tcl": "true",
+        "parameters": {
+          "CONST_VAL": {
+            "value": "0"
+          },
+          "CONST_WIDTH": {
+            "value": "6"
+          }
+        }
+      },
+      "xlconcat_1": {
+        "vlnv": "xilinx.com:ip:xlconcat:2.1",
+        "ip_revision": "7",
+        "xci_name": "master_wrapper_xlconcat_1_0",
+        "xci_path": "ip\\master_wrapper_xlconcat_1_0\\master_wrapper_xlconcat_1_0.xci",
+        "inst_hier_path": "xlconcat_1",
+        "has_run_ip_tcl": "true",
+        "parameters": {
+          "IN0_WIDTH": {
+            "value": "6"
+          },
+          "IN1_WIDTH": {
+            "value": "6"
+          }
+        }
+      }
+    },
+    "nets": {
+      "clk_0_0_1": {
+        "ports": [
+          "clk_0_0",
+          "led_subsystem_wrapper_0/clk_0",
+          "seven_segment_displa_0/clk_0"
+        ]
+      },
+      "led_enable_0_0_1": {
+        "ports": [
+          "led_enable_0_0",
+          "led_subsystem_wrapper_0/led_enable_0"
+        ]
+      },
+      "led_subsystem_wrapper_0_led_data_out_0": {
+        "ports": [
+          "led_subsystem_wrapper_0/led_data_out_0",
+          "led_data_out_0_0"
+        ]
+      },
+      "reset_0_0_1": {
+        "ports": [
+          "reset_0_0",
+          "led_subsystem_wrapper_0/reset_0",
+          "seven_segment_displa_0/reset_in_0"
+        ]
+      },
+      "seven_segment_displa_0_an_0": {
+        "ports": [
+          "seven_segment_displa_0/an_0",
+          "an_0_0"
+        ]
+      },
+      "seven_segment_displa_0_audio_out": {
+        "ports": [
+          "seven_segment_displa_0/audio_out",
+          "led_subsystem_wrapper_0/audio_in_0"
+        ]
+      },
+      "seven_segment_displa_0_sample_valid_output": {
+        "ports": [
+          "seven_segment_displa_0/sample_valid_output",
+          "led_subsystem_wrapper_0/sample_valid_0"
+        ]
+      },
+      "seven_segment_displa_0_seg_out_0": {
+        "ports": [
+          "seven_segment_displa_0/seg_out_0",
+          "seg_out_0_0"
+        ]
+      },
+      "thres_high_sw_1": {
+        "ports": [
+          "thres_high_sw",
+          "xlconcat_0/In1"
+        ]
+      },
+      "thres_low_sw_1": {
+        "ports": [
+          "thres_low_sw",
+          "xlconcat_1/In1"
+        ]
+      },
+      "vauxn6_0_0_1": {
+        "ports": [
+          "vauxn6_0_0",
+          "seven_segment_displa_0/vauxn6_0"
+        ]
+      },
+      "vauxp6_0_0_1": {
+        "ports": [
+          "vauxp6_0_0",
+          "seven_segment_displa_0/vauxp6_0"
+        ]
+      },
+      "xlconcat_0_dout": {
+        "ports": [
+          "xlconcat_0/dout",
+          "led_subsystem_wrapper_0/thresh_high_0"
+        ]
+      },
+      "xlconcat_1_dout": {
+        "ports": [
+          "xlconcat_1/dout",
+          "led_subsystem_wrapper_0/thresh_low_0"
+        ]
+      },
+      "xlconstant_0_dout": {
+        "ports": [
+          "xlconstant_0/dout",
+          "xlconcat_0/In0",
+          "xlconcat_1/In0"
+        ]
+      }
+    }
+  }
+}

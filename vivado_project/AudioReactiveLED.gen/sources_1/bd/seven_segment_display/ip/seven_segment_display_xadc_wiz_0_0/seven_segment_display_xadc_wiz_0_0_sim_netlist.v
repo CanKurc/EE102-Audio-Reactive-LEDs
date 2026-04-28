@@ -4,8 +4,8 @@
 // Tool Version: Vivado v.2025.2 (win64) Build 6299465 Fri Nov 14 19:35:11 GMT 2025
 // Date        : Fri Apr  3 12:52:07 2026
 // Host        : CANKUR8A4F running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode funcsim
-//               c:/Users/cankurc/Vivado_Projects/EE102-Audio-Reactive-LEDs/vivado_project/AudioReactiveLED.gen/sources_1/bd/seven_segment_display/ip/seven_segment_display_xadc_wiz_0_0/seven_segment_display_xadc_wiz_0_0_sim_netlist.v
+// Command     : write_verilog -force -mode funcsim -rename_top seven_segment_display_xadc_wiz_0_0 -prefix
+//               seven_segment_display_xadc_wiz_0_0_ seven_segment_display_xadc_wiz_0_0_sim_netlist.v
 // Design      : seven_segment_display_xadc_wiz_0_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
