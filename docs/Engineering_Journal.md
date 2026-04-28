@@ -130,7 +130,7 @@ The monolithic `led_controller.vhd` (170 lines) was split into four purpose-buil
 **Design Decision — Modularity for Phase 2:**
 The key interface boundary is the three signals between the "brain" module and `color_lut`: `color_index(3:0)`, `brightness_level(2:0)`, and `enable`. Phase 2 additions (moving average filter, hysteresis beat detector, color automation FSM with fade-out, cycling, and breathing) all connect upstream of this boundary without modifying any existing module.
 
-**Updated Proposal:**
+**Updated Proposal.:**
 The project proposal was revised on April 2, 2026 to reflect the updated Phase 2 plan. New additions include: hysteresis-based dual-threshold beat detection (preventing flickering), beat-triggered color cycling through the LUT, smooth brightness fade-out after each beat pulse, and inter-beat breathing mode (triangle-wave brightness ramp when no beats are detected). GitHub Issues #8 and #9 were updated to reflect this scope.
 
 **Current Status:** Issue #5 is closed. The modular LED control system is fully operational with switch-based color and brightness control. Next steps: Issue #4 (XADC microphone integration) and Issue #6 (Phase 1 top-level integration with seven-segment display).
