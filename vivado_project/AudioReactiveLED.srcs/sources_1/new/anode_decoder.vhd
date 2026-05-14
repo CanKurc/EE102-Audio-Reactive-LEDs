@@ -1,22 +1,11 @@
--- ============================================================================
--- Anode Decoder (Phase 1, Copied from LAB5)
---This module controls which of the four 7-segment screens is powered by using
---the "digit select" signal.
-
--- Interface (outputs match what color_lut expects):
---   digit_select   : The 2-bit clock signal
---   an    :  The 4 screen power wires
--- ============================================================================
-
-
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
 entity anode_decoder is
-    Port ( 
-        digit_select : in  STD_LOGIC_VECTOR (1 downto 0); -- The 2-bit clock signal
-        an           : out STD_LOGIC_VECTOR (3 downto 0)  -- The 4 screen power wires
-    );
+Port (
+    digit_select : in STD_LOGIC_VECTOR (1 downto 0); -- The 2-bit clock signal
+    an : out STD_LOGIC_VECTOR (3 downto 0) -- The 4 screen power wires
+);
 end anode_decoder;
 
 architecture Behavioral of anode_decoder is

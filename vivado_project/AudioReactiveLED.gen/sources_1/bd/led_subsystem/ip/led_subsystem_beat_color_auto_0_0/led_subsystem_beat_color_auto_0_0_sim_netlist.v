@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.2 (win64) Build 6299465 Fri Nov 14 19:35:11 GMT 2025
-// Date        : Thu Apr 23 23:37:53 2026
+// Date        : Thu May 14 20:36:40 2026
 // Host        : CANKUR8A4F running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               c:/Users/cankurc/Vivado_Projects/EE102-Audio-Reactive-LEDs/vivado_project/AudioReactiveLED.gen/sources_1/bd/led_subsystem/ip/led_subsystem_beat_color_auto_0_0/led_subsystem_beat_color_auto_0_0_sim_netlist.v
@@ -56,24 +56,26 @@ endmodule
 
 (* ORIG_REF_NAME = "beat_color_auto" *) 
 module led_subsystem_beat_color_auto_0_0_beat_color_auto
-   (\nolurcalis_reg[0]_0 ,
-    \nolurcalis_reg[1]_0 ,
+   (Q,
     \nolurcalis_reg[2]_0 ,
-    Q,
+    \nolurcalis_reg[1]_0 ,
+    \nolurcalis_reg[0]_0 ,
     frame_done,
     clk,
     reset,
     beat_detected);
-  output \nolurcalis_reg[0]_0 ;
-  output \nolurcalis_reg[1]_0 ;
-  output \nolurcalis_reg[2]_0 ;
   output [3:0]Q;
+  output \nolurcalis_reg[2]_0 ;
+  output \nolurcalis_reg[1]_0 ;
+  output \nolurcalis_reg[0]_0 ;
   input frame_done;
   input clk;
   input reset;
   input beat_detected;
 
   wire \FSM_onehot_state[0]_i_1_n_0 ;
+  wire \FSM_onehot_state[0]_i_2_n_0 ;
+  wire \FSM_onehot_state[0]_i_3_n_0 ;
   wire \FSM_onehot_state[1]_i_1_n_0 ;
   wire \FSM_onehot_state[2]_i_1_n_0 ;
   wire \FSM_onehot_state[2]_i_2_n_0 ;
@@ -114,8 +116,6 @@ module led_subsystem_beat_color_auto_0_0_beat_color_auto
   wire \breath_count_reg[6]_i_5_n_7 ;
   wire breath_dir_i_1_n_0;
   wire breath_dir_i_2_n_0;
-  wire breath_dir_i_3_n_0;
-  wire breath_dir_i_4_n_0;
   wire \breath_tick[0]_i_1_n_0 ;
   wire \breath_tick[1]_i_1_n_0 ;
   wire \breath_tick[2]_i_1_n_0 ;
@@ -132,8 +132,16 @@ module led_subsystem_beat_color_auto_0_0_beat_color_auto
   wire \color_idx[3]_i_1_n_0 ;
   wire [0:0]fade_count;
   wire \fade_count[0]_i_1_n_0 ;
+  wire \fade_count[1]_i_1_n_0 ;
+  wire \fade_count[2]_i_1_n_0 ;
+  wire \fade_count[3]_i_1_n_0 ;
   wire \fade_count[4]_i_1_n_0 ;
-  wire [4:0]fade_count_reg;
+  wire \fade_count[4]_i_2_n_0 ;
+  wire \fade_count_reg_n_0_[0] ;
+  wire \fade_count_reg_n_0_[1] ;
+  wire \fade_count_reg_n_0_[2] ;
+  wire \fade_count_reg_n_0_[3] ;
+  wire \fade_count_reg_n_0_[4] ;
   wire frame_done;
   wire [10:0]idle_count;
   wire \idle_count[0]_i_1_n_0 ;
@@ -164,57 +172,73 @@ module led_subsystem_beat_color_auto_0_0_beat_color_auto
   wire \nolurcalis_reg[0]_0 ;
   wire \nolurcalis_reg[1]_0 ;
   wire \nolurcalis_reg[2]_0 ;
-  wire [4:1]p_0_in;
   wire reset;
   wire [7:0]sel0;
   wire [3:1]\NLW_breath_count_reg[6]_i_5_CO_UNCONNECTED ;
   wire [3:2]\NLW_breath_count_reg[6]_i_5_O_UNCONNECTED ;
 
-  LUT4 #(
-    .INIT(16'h5700)) 
-    \FSM_onehot_state[0]_i_1 
-       (.I0(frame_done),
-        .I1(\FSM_onehot_state[2]_i_2_n_0 ),
-        .I2(\FSM_onehot_state[2]_i_3_n_0 ),
-        .I3(fade_count),
-        .O(\FSM_onehot_state[0]_i_1_n_0 ));
-  LUT5 #(
-    .INIT(32'hBBBF8880)) 
-    \FSM_onehot_state[1]_i_1 
-       (.I0(fade_count),
-        .I1(frame_done),
-        .I2(\FSM_onehot_state[2]_i_2_n_0 ),
-        .I3(\FSM_onehot_state[2]_i_3_n_0 ),
-        .I4(\FSM_onehot_state_reg_n_0_[1] ),
-        .O(\FSM_onehot_state[1]_i_1_n_0 ));
-  LUT5 #(
-    .INIT(32'hBBBF8880)) 
-    \FSM_onehot_state[2]_i_1 
-       (.I0(\FSM_onehot_state_reg_n_0_[1] ),
-        .I1(frame_done),
-        .I2(\FSM_onehot_state[2]_i_2_n_0 ),
-        .I3(\FSM_onehot_state[2]_i_3_n_0 ),
-        .I4(\FSM_onehot_state_reg_n_0_[2] ),
-        .O(\FSM_onehot_state[2]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFE000000000000)) 
-    \FSM_onehot_state[2]_i_2 
-       (.I0(idle_count[8]),
-        .I1(idle_count[7]),
-        .I2(idle_count[9]),
-        .I3(idle_count[6]),
-        .I4(idle_count[10]),
-        .I5(\FSM_onehot_state_reg_n_0_[1] ),
-        .O(\FSM_onehot_state[2]_i_2_n_0 ));
+    .INIT(64'h0000FFBF00000000)) 
+    \FSM_onehot_state[0]_i_1 
+       (.I0(\FSM_onehot_state[0]_i_2_n_0 ),
+        .I1(frame_done),
+        .I2(\nolurcalis_reg[2]_0 ),
+        .I3(\FSM_onehot_state[0]_i_3_n_0 ),
+        .I4(\FSM_onehot_state[2]_i_3_n_0 ),
+        .I5(fade_count),
+        .O(\FSM_onehot_state[0]_i_1_n_0 ));
   (* SOFT_HLUTNM = "soft_lutpair2" *) 
   LUT5 #(
-    .INIT(32'h80000000)) 
-    \FSM_onehot_state[2]_i_3 
-       (.I0(\nolurcalis[2]_i_5_n_0 ),
+    .INIT(32'hBFFFFFFF)) 
+    \FSM_onehot_state[0]_i_2 
+       (.I0(\fade_count_reg_n_0_[1] ),
+        .I1(\fade_count_reg_n_0_[0] ),
+        .I2(\fade_count_reg_n_0_[2] ),
+        .I3(\fade_count_reg_n_0_[3] ),
+        .I4(\fade_count_reg_n_0_[4] ),
+        .O(\FSM_onehot_state[0]_i_2_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair14" *) 
+  LUT2 #(
+    .INIT(4'h7)) 
+    \FSM_onehot_state[0]_i_3 
+       (.I0(\nolurcalis_reg[0]_0 ),
+        .I1(\nolurcalis_reg[1]_0 ),
+        .O(\FSM_onehot_state[0]_i_3_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair6" *) 
+  LUT4 #(
+    .INIT(16'hABA8)) 
+    \FSM_onehot_state[1]_i_1 
+       (.I0(fade_count),
+        .I1(\FSM_onehot_state[2]_i_2_n_0 ),
+        .I2(\FSM_onehot_state[2]_i_3_n_0 ),
+        .I3(\FSM_onehot_state_reg_n_0_[1] ),
+        .O(\FSM_onehot_state[1]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair6" *) 
+  LUT4 #(
+    .INIT(16'hABA8)) 
+    \FSM_onehot_state[2]_i_1 
+       (.I0(\FSM_onehot_state_reg_n_0_[1] ),
+        .I1(\FSM_onehot_state[2]_i_2_n_0 ),
+        .I2(\FSM_onehot_state[2]_i_3_n_0 ),
+        .I3(\FSM_onehot_state_reg_n_0_[2] ),
+        .O(\FSM_onehot_state[2]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'h0000000080000000)) 
+    \FSM_onehot_state[2]_i_2 
+       (.I0(\nolurcalis_reg[1]_0 ),
         .I1(\nolurcalis_reg[0]_0 ),
-        .I2(\nolurcalis_reg[1]_0 ),
-        .I3(\nolurcalis_reg[2]_0 ),
+        .I2(\nolurcalis_reg[2]_0 ),
+        .I3(frame_done),
         .I4(fade_count),
+        .I5(\FSM_onehot_state[0]_i_2_n_0 ),
+        .O(\FSM_onehot_state[2]_i_2_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair15" *) 
+  LUT3 #(
+    .INIT(8'h08)) 
+    \FSM_onehot_state[2]_i_3 
+       (.I0(\FSM_onehot_state_reg_n_0_[1] ),
+        .I1(frame_done),
+        .I2(\idle_count[10]_i_3_n_0 ),
         .O(\FSM_onehot_state[2]_i_3_n_0 ));
   (* FSM_ENCODED_STATES = "fading:001,faded_wait:010,breathing:100," *) 
   FDSE #(
@@ -249,28 +273,28 @@ module led_subsystem_beat_color_auto_0_0_beat_color_auto
        (.I0(\FSM_onehot_state_reg_n_0_[2] ),
         .I1(sel0[0]),
         .O(\breath_count[0]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair18" *) 
+  (* SOFT_HLUTNM = "soft_lutpair19" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \breath_count[1]_i_1 
        (.I0(\FSM_onehot_state_reg_n_0_[2] ),
         .I1(\breath_count_reg[4]_i_2_n_7 ),
         .O(\breath_count[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair18" *) 
+  (* SOFT_HLUTNM = "soft_lutpair19" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \breath_count[2]_i_1 
        (.I0(\FSM_onehot_state_reg_n_0_[2] ),
         .I1(\breath_count_reg[4]_i_2_n_6 ),
         .O(\breath_count[2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair17" *) 
+  (* SOFT_HLUTNM = "soft_lutpair18" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \breath_count[3]_i_1 
        (.I0(\FSM_onehot_state_reg_n_0_[2] ),
         .I1(\breath_count_reg[4]_i_2_n_5 ),
         .O(\breath_count[3]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair17" *) 
+  (* SOFT_HLUTNM = "soft_lutpair18" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \breath_count[4]_i_1 
@@ -306,63 +330,63 @@ module led_subsystem_beat_color_auto_0_0_beat_color_auto
        (.I0(sel0[1]),
         .I1(sel0[7]),
         .O(\breath_count[4]_i_7_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair16" *) 
+  (* SOFT_HLUTNM = "soft_lutpair17" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \breath_count[5]_i_1 
        (.I0(\FSM_onehot_state_reg_n_0_[2] ),
         .I1(\breath_count_reg[6]_i_5_n_7 ),
         .O(\breath_count[5]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'h888A)) 
+  LUT6 #(
+    .INIT(64'hFFFFFFFF00001000)) 
     \breath_count[6]_i_1 
-       (.I0(frame_done),
-        .I1(\FSM_onehot_state[2]_i_2_n_0 ),
-        .I2(\breath_count[6]_i_3_n_0 ),
-        .I3(\breath_count[6]_i_4_n_0 ),
+       (.I0(\breath_count[6]_i_3_n_0 ),
+        .I1(\breath_count[6]_i_4_n_0 ),
+        .I2(frame_done),
+        .I3(\FSM_onehot_state_reg_n_0_[2] ),
+        .I4(\breath_tick_reg_n_0_[2] ),
+        .I5(\FSM_onehot_state[2]_i_3_n_0 ),
         .O(\breath_count[6]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair16" *) 
+  (* SOFT_HLUTNM = "soft_lutpair17" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \breath_count[6]_i_2 
        (.I0(\FSM_onehot_state_reg_n_0_[2] ),
         .I1(\breath_count_reg[6]_i_5_n_6 ),
         .O(\breath_count[6]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'h3000000000000088)) 
+  (* SOFT_HLUTNM = "soft_lutpair10" *) 
+  LUT3 #(
+    .INIT(8'hDF)) 
     \breath_count[6]_i_3 
-       (.I0(\breath_count[6]_i_6_n_0 ),
-        .I1(sel0[7]),
-        .I2(\breath_count[6]_i_7_n_0 ),
-        .I3(sel0[5]),
-        .I4(sel0[6]),
-        .I5(sel0[4]),
+       (.I0(\breath_tick_reg_n_0_[0] ),
+        .I1(\breath_tick_reg_n_0_[1] ),
+        .I2(\breath_tick_reg_n_0_[3] ),
         .O(\breath_count[6]_i_3_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1" *) 
-  LUT5 #(
-    .INIT(32'h5557FFFF)) 
+  LUT6 #(
+    .INIT(64'h00A0000000000C00)) 
     \breath_count[6]_i_4 
-       (.I0(\breath_tick_reg_n_0_[3] ),
-        .I1(\breath_tick_reg_n_0_[2] ),
-        .I2(\breath_tick_reg_n_0_[0] ),
-        .I3(\breath_tick_reg_n_0_[1] ),
-        .I4(\FSM_onehot_state_reg_n_0_[2] ),
+       (.I0(\breath_count[6]_i_6_n_0 ),
+        .I1(\breath_count[6]_i_7_n_0 ),
+        .I2(sel0[6]),
+        .I3(sel0[7]),
+        .I4(sel0[5]),
+        .I5(sel0[4]),
         .O(\breath_count[6]_i_4_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair10" *) 
-  LUT4 #(
-    .INIT(16'h0001)) 
-    \breath_count[6]_i_6 
-       (.I0(sel0[3]),
-        .I1(sel0[2]),
-        .I2(sel0[0]),
-        .I3(sel0[1]),
-        .O(\breath_count[6]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair10" *) 
+  (* SOFT_HLUTNM = "soft_lutpair9" *) 
   LUT4 #(
     .INIT(16'h8000)) 
+    \breath_count[6]_i_6 
+       (.I0(sel0[1]),
+        .I1(sel0[0]),
+        .I2(sel0[3]),
+        .I3(sel0[2]),
+        .O(\breath_count[6]_i_6_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair9" *) 
+  LUT4 #(
+    .INIT(16'h0001)) 
     \breath_count[6]_i_7 
-       (.I0(sel0[0]),
-        .I1(sel0[1]),
+       (.I0(sel0[1]),
+        .I1(sel0[0]),
         .I2(sel0[3]),
         .I3(sel0[2]),
         .O(\breath_count[6]_i_7_n_0 ));
@@ -453,41 +477,25 @@ module led_subsystem_beat_color_auto_0_0_beat_color_auto
         .O({\NLW_breath_count_reg[6]_i_5_O_UNCONNECTED [3:2],\breath_count_reg[6]_i_5_n_6 ,\breath_count_reg[6]_i_5_n_7 }),
         .S({1'b0,1'b0,\breath_count[6]_i_8_n_0 ,\breath_count[6]_i_9_n_0 }));
   LUT6 #(
-    .INIT(64'h0000000059AA08AA)) 
+    .INIT(64'h0000000056660222)) 
     breath_dir_i_1
        (.I0(sel0[7]),
-        .I1(breath_dir_i_2_n_0),
-        .I2(\FSM_onehot_state[2]_i_2_n_0 ),
-        .I3(frame_done),
+        .I1(\FSM_onehot_state[2]_i_3_n_0 ),
+        .I2(breath_dir_i_2_n_0),
+        .I3(\breath_count[6]_i_4_n_0 ),
         .I4(\FSM_onehot_state_reg_n_0_[2] ),
         .I5(\nolurcalis[2]_i_1_n_0 ),
         .O(breath_dir_i_1_n_0));
   LUT6 #(
-    .INIT(64'hFFEFAAEFFFEFFFEF)) 
+    .INIT(64'h0000400000000000)) 
     breath_dir_i_2
-       (.I0(\breath_count[6]_i_4_n_0 ),
-        .I1(breath_dir_i_3_n_0),
-        .I2(\breath_count[6]_i_7_n_0 ),
-        .I3(sel0[7]),
-        .I4(breath_dir_i_4_n_0),
-        .I5(\breath_count[6]_i_6_n_0 ),
+       (.I0(\breath_tick_reg_n_0_[2] ),
+        .I1(\FSM_onehot_state_reg_n_0_[2] ),
+        .I2(frame_done),
+        .I3(\breath_tick_reg_n_0_[3] ),
+        .I4(\breath_tick_reg_n_0_[1] ),
+        .I5(\breath_tick_reg_n_0_[0] ),
         .O(breath_dir_i_2_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair13" *) 
-  LUT3 #(
-    .INIT(8'h7F)) 
-    breath_dir_i_3
-       (.I0(sel0[4]),
-        .I1(sel0[6]),
-        .I2(sel0[5]),
-        .O(breath_dir_i_3_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair13" *) 
-  LUT3 #(
-    .INIT(8'hFE)) 
-    breath_dir_i_4
-       (.I0(sel0[5]),
-        .I1(sel0[4]),
-        .I2(sel0[6]),
-        .O(breath_dir_i_4_n_0));
   FDRE #(
     .INIT(1'b0)) 
     breath_dir_reg
@@ -496,44 +504,42 @@ module led_subsystem_beat_color_auto_0_0_beat_color_auto
         .D(breath_dir_i_1_n_0),
         .Q(sel0[7]),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair5" *) 
-  LUT5 #(
-    .INIT(32'h000002AA)) 
+  (* SOFT_HLUTNM = "soft_lutpair13" *) 
+  LUT2 #(
+    .INIT(4'h2)) 
     \breath_tick[0]_i_1 
        (.I0(\FSM_onehot_state_reg_n_0_[2] ),
-        .I1(\breath_tick_reg_n_0_[1] ),
-        .I2(\breath_tick_reg_n_0_[2] ),
-        .I3(\breath_tick_reg_n_0_[3] ),
-        .I4(\breath_tick_reg_n_0_[0] ),
+        .I1(\breath_tick_reg_n_0_[0] ),
         .O(\breath_tick[0]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'h0440)) 
-    \breath_tick[1]_i_1 
-       (.I0(\breath_tick_reg_n_0_[3] ),
-        .I1(\FSM_onehot_state_reg_n_0_[2] ),
-        .I2(\breath_tick_reg_n_0_[1] ),
-        .I3(\breath_tick_reg_n_0_[0] ),
-        .O(\breath_tick[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair5" *) 
+  (* SOFT_HLUTNM = "soft_lutpair3" *) 
   LUT5 #(
-    .INIT(32'h02222000)) 
+    .INIT(32'h60206060)) 
+    \breath_tick[1]_i_1 
+       (.I0(\breath_tick_reg_n_0_[1] ),
+        .I1(\breath_tick_reg_n_0_[0] ),
+        .I2(\FSM_onehot_state_reg_n_0_[2] ),
+        .I3(\breath_tick_reg_n_0_[2] ),
+        .I4(\breath_tick_reg_n_0_[3] ),
+        .O(\breath_tick[1]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair13" *) 
+  LUT4 #(
+    .INIT(16'h2888)) 
     \breath_tick[2]_i_1 
        (.I0(\FSM_onehot_state_reg_n_0_[2] ),
-        .I1(\breath_tick_reg_n_0_[3] ),
-        .I2(\breath_tick_reg_n_0_[1] ),
-        .I3(\breath_tick_reg_n_0_[0] ),
-        .I4(\breath_tick_reg_n_0_[2] ),
+        .I1(\breath_tick_reg_n_0_[2] ),
+        .I2(\breath_tick_reg_n_0_[0] ),
+        .I3(\breath_tick_reg_n_0_[1] ),
         .O(\breath_tick[2]_i_1_n_0 ));
   LUT3 #(
-    .INIT(8'hA8)) 
+    .INIT(8'hEA)) 
     \breath_tick[3]_i_1 
-       (.I0(frame_done),
-        .I1(\FSM_onehot_state[2]_i_2_n_0 ),
+       (.I0(\FSM_onehot_state[2]_i_3_n_0 ),
+        .I1(frame_done),
         .I2(\FSM_onehot_state_reg_n_0_[2] ),
         .O(\breath_tick[3]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1" *) 
+  (* SOFT_HLUTNM = "soft_lutpair3" *) 
   LUT5 #(
-    .INIT(32'h00028000)) 
+    .INIT(32'h2A8A8000)) 
     \breath_tick[3]_i_2 
        (.I0(\FSM_onehot_state_reg_n_0_[2] ),
         .I1(\breath_tick_reg_n_0_[2] ),
@@ -573,20 +579,20 @@ module led_subsystem_beat_color_auto_0_0_beat_color_auto
         .D(\breath_tick[3]_i_2_n_0 ),
         .Q(\breath_tick_reg_n_0_[3] ),
         .R(\nolurcalis[2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair15" *) 
+  (* SOFT_HLUTNM = "soft_lutpair16" *) 
   LUT1 #(
     .INIT(2'h1)) 
     \color_idx[0]_i_1 
        (.I0(Q[0]),
         .O(\color_idx[0]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair15" *) 
+  (* SOFT_HLUTNM = "soft_lutpair16" *) 
   LUT2 #(
     .INIT(4'h6)) 
     \color_idx[1]_i_1 
        (.I0(Q[1]),
         .I1(Q[0]),
         .O(\color_idx[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair9" *) 
+  (* SOFT_HLUTNM = "soft_lutpair7" *) 
   LUT3 #(
     .INIT(8'h78)) 
     \color_idx[2]_i_1 
@@ -594,7 +600,7 @@ module led_subsystem_beat_color_auto_0_0_beat_color_auto
         .I1(Q[0]),
         .I2(Q[2]),
         .O(\color_idx[2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair9" *) 
+  (* SOFT_HLUTNM = "soft_lutpair7" *) 
   LUT4 #(
     .INIT(16'h7F80)) 
     \color_idx[3]_i_1 
@@ -635,103 +641,99 @@ module led_subsystem_beat_color_auto_0_0_beat_color_auto
         .D(\color_idx[3]_i_1_n_0 ),
         .Q(Q[3]),
         .R(reset));
-  (* SOFT_HLUTNM = "soft_lutpair0" *) 
-  LUT5 #(
-    .INIT(32'h007F00FF)) 
+  (* SOFT_HLUTNM = "soft_lutpair2" *) 
+  LUT1 #(
+    .INIT(2'h1)) 
     \fade_count[0]_i_1 
-       (.I0(fade_count_reg[3]),
-        .I1(fade_count_reg[2]),
-        .I2(fade_count_reg[4]),
-        .I3(fade_count_reg[0]),
-        .I4(fade_count_reg[1]),
+       (.I0(\fade_count_reg_n_0_[0] ),
         .O(\fade_count[0]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair4" *) 
-  LUT5 #(
-    .INIT(32'h007F7F00)) 
-    \fade_count[1]_i_1 
-       (.I0(fade_count_reg[4]),
-        .I1(fade_count_reg[2]),
-        .I2(fade_count_reg[3]),
-        .I3(fade_count_reg[1]),
-        .I4(fade_count_reg[0]),
-        .O(p_0_in[1]));
   (* SOFT_HLUTNM = "soft_lutpair0" *) 
   LUT5 #(
-    .INIT(32'h334C4CCC)) 
-    \fade_count[2]_i_1 
-       (.I0(fade_count_reg[3]),
-        .I1(fade_count_reg[2]),
-        .I2(fade_count_reg[4]),
-        .I3(fade_count_reg[0]),
-        .I4(fade_count_reg[1]),
-        .O(p_0_in[2]));
-  (* SOFT_HLUTNM = "soft_lutpair3" *) 
+    .INIT(32'h26666666)) 
+    \fade_count[1]_i_1 
+       (.I0(\fade_count_reg_n_0_[1] ),
+        .I1(\fade_count_reg_n_0_[0] ),
+        .I2(\fade_count_reg_n_0_[2] ),
+        .I3(\fade_count_reg_n_0_[3] ),
+        .I4(\fade_count_reg_n_0_[4] ),
+        .O(\fade_count[1]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair0" *) 
   LUT5 #(
-    .INIT(32'h662A2AAA)) 
+    .INIT(32'h38787878)) 
+    \fade_count[2]_i_1 
+       (.I0(\fade_count_reg_n_0_[1] ),
+        .I1(\fade_count_reg_n_0_[0] ),
+        .I2(\fade_count_reg_n_0_[2] ),
+        .I3(\fade_count_reg_n_0_[3] ),
+        .I4(\fade_count_reg_n_0_[4] ),
+        .O(\fade_count[2]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair1" *) 
+  LUT5 #(
+    .INIT(32'h3F807F80)) 
     \fade_count[3]_i_1 
-       (.I0(fade_count_reg[3]),
-        .I1(fade_count_reg[2]),
-        .I2(fade_count_reg[4]),
-        .I3(fade_count_reg[0]),
-        .I4(fade_count_reg[1]),
-        .O(p_0_in[3]));
+       (.I0(\fade_count_reg_n_0_[1] ),
+        .I1(\fade_count_reg_n_0_[0] ),
+        .I2(\fade_count_reg_n_0_[2] ),
+        .I3(\fade_count_reg_n_0_[3] ),
+        .I4(\fade_count_reg_n_0_[4] ),
+        .O(\fade_count[3]_i_1_n_0 ));
   LUT2 #(
     .INIT(4'h8)) 
     \fade_count[4]_i_1 
        (.I0(frame_done),
         .I1(fade_count),
         .O(\fade_count[4]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair3" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1" *) 
   LUT5 #(
-    .INIT(32'h787070F0)) 
+    .INIT(32'h3FFF8000)) 
     \fade_count[4]_i_2 
-       (.I0(fade_count_reg[3]),
-        .I1(fade_count_reg[2]),
-        .I2(fade_count_reg[4]),
-        .I3(fade_count_reg[0]),
-        .I4(fade_count_reg[1]),
-        .O(p_0_in[4]));
+       (.I0(\fade_count_reg_n_0_[1] ),
+        .I1(\fade_count_reg_n_0_[0] ),
+        .I2(\fade_count_reg_n_0_[2] ),
+        .I3(\fade_count_reg_n_0_[3] ),
+        .I4(\fade_count_reg_n_0_[4] ),
+        .O(\fade_count[4]_i_2_n_0 ));
   FDRE #(
     .INIT(1'b0)) 
     \fade_count_reg[0] 
        (.C(clk),
         .CE(\fade_count[4]_i_1_n_0 ),
         .D(\fade_count[0]_i_1_n_0 ),
-        .Q(fade_count_reg[0]),
+        .Q(\fade_count_reg_n_0_[0] ),
         .R(\nolurcalis[2]_i_1_n_0 ));
   FDRE #(
     .INIT(1'b0)) 
     \fade_count_reg[1] 
        (.C(clk),
         .CE(\fade_count[4]_i_1_n_0 ),
-        .D(p_0_in[1]),
-        .Q(fade_count_reg[1]),
+        .D(\fade_count[1]_i_1_n_0 ),
+        .Q(\fade_count_reg_n_0_[1] ),
         .R(\nolurcalis[2]_i_1_n_0 ));
   FDRE #(
     .INIT(1'b0)) 
     \fade_count_reg[2] 
        (.C(clk),
         .CE(\fade_count[4]_i_1_n_0 ),
-        .D(p_0_in[2]),
-        .Q(fade_count_reg[2]),
+        .D(\fade_count[2]_i_1_n_0 ),
+        .Q(\fade_count_reg_n_0_[2] ),
         .R(\nolurcalis[2]_i_1_n_0 ));
   FDRE #(
     .INIT(1'b0)) 
     \fade_count_reg[3] 
        (.C(clk),
         .CE(\fade_count[4]_i_1_n_0 ),
-        .D(p_0_in[3]),
-        .Q(fade_count_reg[3]),
+        .D(\fade_count[3]_i_1_n_0 ),
+        .Q(\fade_count_reg_n_0_[3] ),
         .R(\nolurcalis[2]_i_1_n_0 ));
   FDRE #(
     .INIT(1'b0)) 
     \fade_count_reg[4] 
        (.C(clk),
         .CE(\fade_count[4]_i_1_n_0 ),
-        .D(p_0_in[4]),
-        .Q(fade_count_reg[4]),
+        .D(\fade_count[4]_i_2_n_0 ),
+        .Q(\fade_count_reg_n_0_[4] ),
         .R(\nolurcalis[2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair8" *) 
+  (* SOFT_HLUTNM = "soft_lutpair11" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \idle_count[0]_i_1 
@@ -739,140 +741,139 @@ module led_subsystem_beat_color_auto_0_0_beat_color_auto
         .I1(idle_count[0]),
         .O(\idle_count[0]_i_1_n_0 ));
   LUT4 #(
-    .INIT(16'h8A88)) 
+    .INIT(16'hEAAA)) 
     \idle_count[10]_i_1 
-       (.I0(frame_done),
-        .I1(\FSM_onehot_state[2]_i_3_n_0 ),
-        .I2(\idle_count[10]_i_3_n_0 ),
+       (.I0(\FSM_onehot_state[2]_i_2_n_0 ),
+        .I1(\idle_count[10]_i_3_n_0 ),
+        .I2(frame_done),
         .I3(\FSM_onehot_state_reg_n_0_[1] ),
         .O(\idle_count[10]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair8" *) 
+  (* SOFT_HLUTNM = "soft_lutpair11" *) 
   LUT4 #(
-    .INIT(16'h7800)) 
+    .INIT(16'h7080)) 
     \idle_count[10]_i_2 
        (.I0(\idle_count[10]_i_4_n_0 ),
         .I1(idle_count[9]),
-        .I2(idle_count[10]),
-        .I3(\FSM_onehot_state_reg_n_0_[1] ),
+        .I2(\FSM_onehot_state_reg_n_0_[1] ),
+        .I3(idle_count[10]),
         .O(\idle_count[10]_i_2_n_0 ));
   LUT5 #(
-    .INIT(32'hAAAAAAA8)) 
+    .INIT(32'h0001FFFF)) 
     \idle_count[10]_i_3 
-       (.I0(idle_count[10]),
-        .I1(idle_count[6]),
-        .I2(idle_count[9]),
+       (.I0(idle_count[8]),
+        .I1(idle_count[9]),
+        .I2(idle_count[6]),
         .I3(idle_count[7]),
-        .I4(idle_count[8]),
+        .I4(idle_count[10]),
         .O(\idle_count[10]_i_3_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair11" *) 
+  (* SOFT_HLUTNM = "soft_lutpair12" *) 
   LUT4 #(
-    .INIT(16'h0800)) 
+    .INIT(16'h0080)) 
     \idle_count[10]_i_4 
        (.I0(idle_count[8]),
         .I1(idle_count[7]),
-        .I2(\idle_count[9]_i_2_n_0 ),
-        .I3(idle_count[6]),
+        .I2(idle_count[6]),
+        .I3(\idle_count[9]_i_2_n_0 ),
         .O(\idle_count[10]_i_4_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair14" *) 
   LUT3 #(
-    .INIT(8'h60)) 
+    .INIT(8'h48)) 
     \idle_count[1]_i_1 
+       (.I0(idle_count[0]),
+        .I1(\FSM_onehot_state_reg_n_0_[1] ),
+        .I2(idle_count[1]),
+        .O(\idle_count[1]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair4" *) 
+  LUT4 #(
+    .INIT(16'h7080)) 
+    \idle_count[2]_i_1 
        (.I0(idle_count[1]),
         .I1(idle_count[0]),
         .I2(\FSM_onehot_state_reg_n_0_[1] ),
-        .O(\idle_count[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair6" *) 
-  LUT4 #(
-    .INIT(16'h2A80)) 
-    \idle_count[2]_i_1 
-       (.I0(\FSM_onehot_state_reg_n_0_[1] ),
-        .I1(idle_count[0]),
-        .I2(idle_count[1]),
         .I3(idle_count[2]),
         .O(\idle_count[2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair6" *) 
+  (* SOFT_HLUTNM = "soft_lutpair4" *) 
   LUT5 #(
-    .INIT(32'h2AAA8000)) 
+    .INIT(32'h7F008000)) 
     \idle_count[3]_i_1 
-       (.I0(\FSM_onehot_state_reg_n_0_[1] ),
-        .I1(idle_count[1]),
-        .I2(idle_count[0]),
-        .I3(idle_count[2]),
+       (.I0(idle_count[2]),
+        .I1(idle_count[0]),
+        .I2(idle_count[1]),
+        .I3(\FSM_onehot_state_reg_n_0_[1] ),
         .I4(idle_count[3]),
         .O(\idle_count[3]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h2AAAAAAA80000000)) 
+    .INIT(64'h7FFF000080000000)) 
     \idle_count[4]_i_1 
-       (.I0(\FSM_onehot_state_reg_n_0_[1] ),
-        .I1(idle_count[2]),
-        .I2(idle_count[0]),
-        .I3(idle_count[1]),
-        .I4(idle_count[3]),
-        .I5(idle_count[4]),
-        .O(\idle_count[4]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair14" *) 
-  LUT3 #(
-    .INIT(8'h82)) 
-    \idle_count[5]_i_1 
-       (.I0(\FSM_onehot_state_reg_n_0_[1] ),
-        .I1(\idle_count[5]_i_2_n_0 ),
-        .I2(idle_count[5]),
-        .O(\idle_count[5]_i_1_n_0 ));
-  LUT5 #(
-    .INIT(32'h7FFFFFFF)) 
-    \idle_count[5]_i_2 
        (.I0(idle_count[3]),
         .I1(idle_count[1]),
         .I2(idle_count[0]),
         .I3(idle_count[2]),
-        .I4(idle_count[4]),
-        .O(\idle_count[5]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair11" *) 
+        .I4(\FSM_onehot_state_reg_n_0_[1] ),
+        .I5(idle_count[4]),
+        .O(\idle_count[4]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair15" *) 
   LUT3 #(
-    .INIT(8'h82)) 
-    \idle_count[6]_i_1 
-       (.I0(\FSM_onehot_state_reg_n_0_[1] ),
-        .I1(\idle_count[9]_i_2_n_0 ),
-        .I2(idle_count[6]),
-        .O(\idle_count[6]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair7" *) 
-  LUT4 #(
-    .INIT(16'h8A20)) 
-    \idle_count[7]_i_1 
-       (.I0(\FSM_onehot_state_reg_n_0_[1] ),
-        .I1(\idle_count[9]_i_2_n_0 ),
-        .I2(idle_count[6]),
-        .I3(idle_count[7]),
-        .O(\idle_count[7]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair7" *) 
+    .INIT(8'h48)) 
+    \idle_count[5]_i_1 
+       (.I0(\idle_count[5]_i_2_n_0 ),
+        .I1(\FSM_onehot_state_reg_n_0_[1] ),
+        .I2(idle_count[5]),
+        .O(\idle_count[5]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'hA2AA0800)) 
-    \idle_count[8]_i_1 
-       (.I0(\FSM_onehot_state_reg_n_0_[1] ),
-        .I1(idle_count[6]),
-        .I2(\idle_count[9]_i_2_n_0 ),
-        .I3(idle_count[7]),
-        .I4(idle_count[8]),
-        .O(\idle_count[8]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'hAA2AAAAA00800000)) 
-    \idle_count[9]_i_1 
-       (.I0(\FSM_onehot_state_reg_n_0_[1] ),
-        .I1(idle_count[8]),
-        .I2(idle_count[7]),
-        .I3(\idle_count[9]_i_2_n_0 ),
-        .I4(idle_count[6]),
-        .I5(idle_count[9]),
-        .O(\idle_count[9]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'h7FFFFFFFFFFFFFFF)) 
-    \idle_count[9]_i_2 
+    .INIT(32'h80000000)) 
+    \idle_count[5]_i_2 
        (.I0(idle_count[4]),
         .I1(idle_count[2]),
         .I2(idle_count[0]),
         .I3(idle_count[1]),
         .I4(idle_count[3]),
-        .I5(idle_count[5]),
+        .O(\idle_count[5]_i_2_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair12" *) 
+  LUT3 #(
+    .INIT(8'h84)) 
+    \idle_count[6]_i_1 
+       (.I0(\idle_count[9]_i_2_n_0 ),
+        .I1(\FSM_onehot_state_reg_n_0_[1] ),
+        .I2(idle_count[6]),
+        .O(\idle_count[6]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair5" *) 
+  LUT4 #(
+    .INIT(16'hD020)) 
+    \idle_count[7]_i_1 
+       (.I0(idle_count[6]),
+        .I1(\idle_count[9]_i_2_n_0 ),
+        .I2(\FSM_onehot_state_reg_n_0_[1] ),
+        .I3(idle_count[7]),
+        .O(\idle_count[7]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair5" *) 
+  LUT5 #(
+    .INIT(32'hBF004000)) 
+    \idle_count[8]_i_1 
+       (.I0(\idle_count[9]_i_2_n_0 ),
+        .I1(idle_count[6]),
+        .I2(idle_count[7]),
+        .I3(\FSM_onehot_state_reg_n_0_[1] ),
+        .I4(idle_count[8]),
+        .O(\idle_count[8]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'hFF7F000000800000)) 
+    \idle_count[9]_i_1 
+       (.I0(idle_count[8]),
+        .I1(idle_count[7]),
+        .I2(idle_count[6]),
+        .I3(\idle_count[9]_i_2_n_0 ),
+        .I4(\FSM_onehot_state_reg_n_0_[1] ),
+        .I5(idle_count[9]),
+        .O(\idle_count[9]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'h7FFFFFFFFFFFFFFF)) 
+    \idle_count[9]_i_2 
+       (.I0(idle_count[5]),
+        .I1(idle_count[3]),
+        .I2(idle_count[1]),
+        .I3(idle_count[0]),
+        .I4(idle_count[2]),
+        .I5(idle_count[4]),
         .O(\idle_count[9]_i_2_n_0 ));
   FDRE #(
     .INIT(1'b0)) 
@@ -963,16 +964,16 @@ module led_subsystem_beat_color_auto_0_0_beat_color_auto
         .Q(idle_count[9]),
         .R(\nolurcalis[2]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hFF44FFFFFFF40000)) 
+    .INIT(64'hAFAAFFFFEFEE0000)) 
     \nolurcalis[0]_i_1 
-       (.I0(sel0[4]),
-        .I1(\FSM_onehot_state_reg_n_0_[2] ),
-        .I2(fade_count),
-        .I3(\FSM_onehot_state_reg_n_0_[1] ),
+       (.I0(\FSM_onehot_state_reg_n_0_[1] ),
+        .I1(fade_count),
+        .I2(sel0[4]),
+        .I3(\FSM_onehot_state_reg_n_0_[2] ),
         .I4(\nolurcalis[2]_i_4_n_0 ),
         .I5(\nolurcalis_reg[0]_0 ),
         .O(\nolurcalis[0]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair12" *) 
+  (* SOFT_HLUTNM = "soft_lutpair14" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \nolurcalis[1]_i_1 
@@ -981,66 +982,66 @@ module led_subsystem_beat_color_auto_0_0_beat_color_auto
         .I2(\nolurcalis_reg[1]_0 ),
         .O(\nolurcalis[1]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFFFFFF2828FF28)) 
+    .INIT(64'hFF48FF48FFFFFF48)) 
     \nolurcalis[1]_i_2 
-       (.I0(fade_count),
-        .I1(\nolurcalis_reg[1]_0 ),
+       (.I0(\nolurcalis_reg[1]_0 ),
+        .I1(fade_count),
         .I2(\nolurcalis_reg[0]_0 ),
-        .I3(\FSM_onehot_state_reg_n_0_[2] ),
-        .I4(sel0[5]),
-        .I5(\FSM_onehot_state_reg_n_0_[1] ),
+        .I3(\FSM_onehot_state_reg_n_0_[1] ),
+        .I4(\FSM_onehot_state_reg_n_0_[2] ),
+        .I5(sel0[5]),
         .O(\nolurcalis[1]_i_2_n_0 ));
   LUT2 #(
     .INIT(4'hE)) 
     \nolurcalis[2]_i_1 
-       (.I0(beat_detected),
-        .I1(reset),
+       (.I0(reset),
+        .I1(beat_detected),
         .O(\nolurcalis[2]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hFFAEFFFFFFAE0000)) 
+    .INIT(64'hEEFEFFFFEEFE0000)) 
     \nolurcalis[2]_i_2 
        (.I0(\nolurcalis[2]_i_3_n_0 ),
-        .I1(\FSM_onehot_state_reg_n_0_[2] ),
-        .I2(sel0[6]),
-        .I3(\FSM_onehot_state_reg_n_0_[1] ),
+        .I1(\FSM_onehot_state_reg_n_0_[1] ),
+        .I2(\FSM_onehot_state_reg_n_0_[2] ),
+        .I3(sel0[6]),
         .I4(\nolurcalis[2]_i_4_n_0 ),
         .I5(\nolurcalis_reg[2]_0 ),
         .O(\nolurcalis[2]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair2" *) 
+  (* SOFT_HLUTNM = "soft_lutpair8" *) 
   LUT4 #(
-    .INIT(16'h2A80)) 
+    .INIT(16'h7080)) 
     \nolurcalis[2]_i_3 
-       (.I0(fade_count),
+       (.I0(\nolurcalis_reg[0]_0 ),
         .I1(\nolurcalis_reg[1]_0 ),
-        .I2(\nolurcalis_reg[0]_0 ),
+        .I2(fade_count),
         .I3(\nolurcalis_reg[2]_0 ),
         .O(\nolurcalis[2]_i_3_n_0 ));
-  LUT5 #(
-    .INIT(32'hAAAA0080)) 
+  LUT6 #(
+    .INIT(64'hFF40404000000000)) 
     \nolurcalis[2]_i_4 
-       (.I0(frame_done),
+       (.I0(\FSM_onehot_state[0]_i_2_n_0 ),
         .I1(\nolurcalis[2]_i_5_n_0 ),
         .I2(fade_count),
         .I3(\nolurcalis[2]_i_6_n_0 ),
         .I4(\FSM_onehot_state_reg_n_0_[2] ),
+        .I5(frame_done),
         .O(\nolurcalis[2]_i_4_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair4" *) 
-  LUT5 #(
-    .INIT(32'hE0000000)) 
-    \nolurcalis[2]_i_5 
-       (.I0(fade_count_reg[1]),
-        .I1(fade_count_reg[0]),
-        .I2(fade_count_reg[4]),
-        .I3(fade_count_reg[2]),
-        .I4(fade_count_reg[3]),
-        .O(\nolurcalis[2]_i_5_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair12" *) 
+  (* SOFT_HLUTNM = "soft_lutpair8" *) 
   LUT3 #(
-    .INIT(8'h80)) 
-    \nolurcalis[2]_i_6 
-       (.I0(\nolurcalis_reg[0]_0 ),
-        .I1(\nolurcalis_reg[1]_0 ),
+    .INIT(8'h7F)) 
+    \nolurcalis[2]_i_5 
+       (.I0(\nolurcalis_reg[1]_0 ),
+        .I1(\nolurcalis_reg[0]_0 ),
         .I2(\nolurcalis_reg[2]_0 ),
+        .O(\nolurcalis[2]_i_5_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair10" *) 
+  LUT4 #(
+    .INIT(16'h0020)) 
+    \nolurcalis[2]_i_6 
+       (.I0(\breath_tick_reg_n_0_[3] ),
+        .I1(\breath_tick_reg_n_0_[1] ),
+        .I2(\breath_tick_reg_n_0_[0] ),
+        .I3(\breath_tick_reg_n_0_[2] ),
         .O(\nolurcalis[2]_i_6_n_0 ));
   FDRE #(
     .INIT(1'b0)) 

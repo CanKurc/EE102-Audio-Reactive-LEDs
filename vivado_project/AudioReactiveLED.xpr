@@ -89,13 +89,6 @@
   <FileSets Version="1" Minor="32">
     <FileSet Name="sources_1" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
       <Filter Type="Srcs"/>
-      <File Path="$PSRCDIR/sources_1/new/led_controller.vhd">
-        <FileInfo>
-          <Attr Name="AutoDisabled" Val="1"/>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
       <File Path="$PSRCDIR/sources_1/new/manual_color_select.vhd">
         <FileInfo>
           <Attr Name="AutoDisabled" Val="1"/>
@@ -340,9 +333,9 @@
         <Option Name="UseBlackboxStub" Val="1"/>
       </Config>
     </FileSet>
-    <FileSet Name="master_wrapper_led_subsystem_wrapper_0_1" Type="BlockSrcs" RelSrcDir="$PSRCDIR/master_wrapper_led_subsystem_wrapper_0_1" RelGenDir="$PGENDIR/master_wrapper_led_subsystem_wrapper_0_1">
+    <FileSet Name="led_subsystem_beat_color_auto_0_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/led_subsystem_beat_color_auto_0_0" RelGenDir="$PGENDIR/led_subsystem_beat_color_auto_0_0">
       <Config>
-        <Option Name="TopModule" Val="master_wrapper_led_subsystem_wrapper_0_1"/>
+        <Option Name="TopModule" Val="led_subsystem_beat_color_auto_0_0"/>
         <Option Name="UseBlackboxStub" Val="1"/>
       </Config>
     </FileSet>
@@ -352,9 +345,9 @@
         <Option Name="UseBlackboxStub" Val="1"/>
       </Config>
     </FileSet>
-    <FileSet Name="led_subsystem_beat_color_auto_0_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/led_subsystem_beat_color_auto_0_0" RelGenDir="$PGENDIR/led_subsystem_beat_color_auto_0_0">
+    <FileSet Name="master_wrapper_led_subsystem_wrapper_0_1" Type="BlockSrcs" RelSrcDir="$PSRCDIR/master_wrapper_led_subsystem_wrapper_0_1" RelGenDir="$PGENDIR/master_wrapper_led_subsystem_wrapper_0_1">
       <Config>
-        <Option Name="TopModule" Val="led_subsystem_beat_color_auto_0_0"/>
+        <Option Name="TopModule" Val="master_wrapper_led_subsystem_wrapper_0_1"/>
         <Option Name="UseBlackboxStub" Val="1"/>
       </Config>
     </FileSet>
@@ -410,9 +403,7 @@
     </Run>
     <Run Id="seven_segment_display_anode_decoder_0_0_synth_1" Type="Ft3:Synth" SrcSet="seven_segment_display_anode_decoder_0_0" Part="xc7a35tcpg236-1" ConstrsSet="seven_segment_display_anode_decoder_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/seven_segment_display_anode_decoder_0_0_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/seven_segment_display_anode_decoder_0_0_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/seven_segment_display_anode_decoder_0_0_synth_1" ParallelReportGen="true">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2025">
-          <Desc>Vivado Synthesis Defaults</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2025"/>
         <Step Id="synth_design"/>
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
@@ -422,9 +413,7 @@
     </Run>
     <Run Id="seven_segment_display_binary_input_to_7_se_0_0_synth_1" Type="Ft3:Synth" SrcSet="seven_segment_display_binary_input_to_7_se_0_0" Part="xc7a35tcpg236-1" ConstrsSet="seven_segment_display_binary_input_to_7_se_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/seven_segment_display_binary_input_to_7_se_0_0_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/seven_segment_display_binary_input_to_7_se_0_0_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/seven_segment_display_binary_input_to_7_se_0_0_synth_1" ParallelReportGen="true">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2025">
-          <Desc>Vivado Synthesis Defaults</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2025"/>
         <Step Id="synth_design"/>
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
@@ -434,9 +423,7 @@
     </Run>
     <Run Id="seven_segment_display_clock_divider_0_0_synth_1" Type="Ft3:Synth" SrcSet="seven_segment_display_clock_divider_0_0" Part="xc7a35tcpg236-1" ConstrsSet="seven_segment_display_clock_divider_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/seven_segment_display_clock_divider_0_0_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/seven_segment_display_clock_divider_0_0_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/seven_segment_display_clock_divider_0_0_synth_1" ParallelReportGen="true">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2025">
-          <Desc>Vivado Synthesis Defaults</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2025"/>
         <Step Id="synth_design"/>
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
@@ -446,9 +433,7 @@
     </Run>
     <Run Id="seven_segment_display_mux_4to1_0_0_synth_1" Type="Ft3:Synth" SrcSet="seven_segment_display_mux_4to1_0_0" Part="xc7a35tcpg236-1" ConstrsSet="seven_segment_display_mux_4to1_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/seven_segment_display_mux_4to1_0_0_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/seven_segment_display_mux_4to1_0_0_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/seven_segment_display_mux_4to1_0_0_synth_1" ParallelReportGen="true">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2025">
-          <Desc>Vivado Synthesis Defaults</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2025"/>
         <Step Id="synth_design"/>
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
@@ -458,9 +443,7 @@
     </Run>
     <Run Id="led_subsystem_hysteresis_detector_0_0_synth_1" Type="Ft3:Synth" SrcSet="led_subsystem_hysteresis_detector_0_0" Part="xc7a35tcpg236-1" ConstrsSet="led_subsystem_hysteresis_detector_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/led_subsystem_hysteresis_detector_0_0_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/led_subsystem_hysteresis_detector_0_0_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/led_subsystem_hysteresis_detector_0_0_synth_1" ParallelReportGen="true">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2025">
-          <Desc>Vivado Synthesis Defaults</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2025"/>
         <Step Id="synth_design"/>
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
@@ -470,9 +453,7 @@
     </Run>
     <Run Id="led_subsystem_moving_average_0_0_synth_1" Type="Ft3:Synth" SrcSet="led_subsystem_moving_average_0_0" Part="xc7a35tcpg236-1" ConstrsSet="led_subsystem_moving_average_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/led_subsystem_moving_average_0_0_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/led_subsystem_moving_average_0_0_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/led_subsystem_moving_average_0_0_synth_1" ParallelReportGen="true">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2025">
-          <Desc>Vivado Synthesis Defaults</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2025"/>
         <Step Id="synth_design"/>
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
@@ -480,7 +461,7 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="master_wrapper_led_subsystem_wrapper_0_1_synth_1" Type="Ft3:Synth" SrcSet="master_wrapper_led_subsystem_wrapper_0_1" Part="xc7a35tcpg236-1" ConstrsSet="master_wrapper_led_subsystem_wrapper_0_1" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/master_wrapper_led_subsystem_wrapper_0_1_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/master_wrapper_led_subsystem_wrapper_0_1_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/master_wrapper_led_subsystem_wrapper_0_1_synth_1" ParallelReportGen="true">
+    <Run Id="led_subsystem_beat_color_auto_0_0_synth_1" Type="Ft3:Synth" SrcSet="led_subsystem_beat_color_auto_0_0" Part="xc7a35tcpg236-1" ConstrsSet="led_subsystem_beat_color_auto_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/led_subsystem_beat_color_auto_0_0_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/led_subsystem_beat_color_auto_0_0_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/led_subsystem_beat_color_auto_0_0_synth_1" ParallelReportGen="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2025">
           <Desc>Vivado Synthesis Defaults</Desc>
@@ -504,7 +485,7 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="led_subsystem_beat_color_auto_0_0_synth_1" Type="Ft3:Synth" SrcSet="led_subsystem_beat_color_auto_0_0" Part="xc7a35tcpg236-1" ConstrsSet="led_subsystem_beat_color_auto_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/led_subsystem_beat_color_auto_0_0_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/led_subsystem_beat_color_auto_0_0_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/led_subsystem_beat_color_auto_0_0_synth_1" ParallelReportGen="true">
+    <Run Id="master_wrapper_led_subsystem_wrapper_0_1_synth_1" Type="Ft3:Synth" SrcSet="master_wrapper_led_subsystem_wrapper_0_1" Part="xc7a35tcpg236-1" ConstrsSet="master_wrapper_led_subsystem_wrapper_0_1" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/master_wrapper_led_subsystem_wrapper_0_1_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/master_wrapper_led_subsystem_wrapper_0_1_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/master_wrapper_led_subsystem_wrapper_0_1_synth_1" ParallelReportGen="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2025">
           <Desc>Vivado Synthesis Defaults</Desc>
@@ -570,9 +551,7 @@
     </Run>
     <Run Id="seven_segment_display_anode_decoder_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a35tcpg236-1" ConstrsSet="seven_segment_display_anode_decoder_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="seven_segment_display_anode_decoder_0_0_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/seven_segment_display_anode_decoder_0_0_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/seven_segment_display_anode_decoder_0_0_impl_1" ParallelReportGen="true">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2025">
-          <Desc>Default settings for Implementation.</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2025"/>
         <Step Id="init_design"/>
         <Step Id="opt_design"/>
         <Step Id="power_opt_design"/>
@@ -589,9 +568,7 @@
     </Run>
     <Run Id="seven_segment_display_binary_input_to_7_se_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a35tcpg236-1" ConstrsSet="seven_segment_display_binary_input_to_7_se_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="seven_segment_display_binary_input_to_7_se_0_0_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/seven_segment_display_binary_input_to_7_se_0_0_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/seven_segment_display_binary_input_to_7_se_0_0_impl_1" ParallelReportGen="true">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2025">
-          <Desc>Default settings for Implementation.</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2025"/>
         <Step Id="init_design"/>
         <Step Id="opt_design"/>
         <Step Id="power_opt_design"/>
@@ -608,9 +585,7 @@
     </Run>
     <Run Id="seven_segment_display_clock_divider_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a35tcpg236-1" ConstrsSet="seven_segment_display_clock_divider_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="seven_segment_display_clock_divider_0_0_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/seven_segment_display_clock_divider_0_0_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/seven_segment_display_clock_divider_0_0_impl_1" ParallelReportGen="true">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2025">
-          <Desc>Default settings for Implementation.</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2025"/>
         <Step Id="init_design"/>
         <Step Id="opt_design"/>
         <Step Id="power_opt_design"/>
@@ -627,9 +602,7 @@
     </Run>
     <Run Id="seven_segment_display_mux_4to1_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a35tcpg236-1" ConstrsSet="seven_segment_display_mux_4to1_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="seven_segment_display_mux_4to1_0_0_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/seven_segment_display_mux_4to1_0_0_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/seven_segment_display_mux_4to1_0_0_impl_1" ParallelReportGen="true">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2025">
-          <Desc>Default settings for Implementation.</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2025"/>
         <Step Id="init_design"/>
         <Step Id="opt_design"/>
         <Step Id="power_opt_design"/>
@@ -646,9 +619,7 @@
     </Run>
     <Run Id="led_subsystem_hysteresis_detector_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a35tcpg236-1" ConstrsSet="led_subsystem_hysteresis_detector_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="led_subsystem_hysteresis_detector_0_0_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/led_subsystem_hysteresis_detector_0_0_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/led_subsystem_hysteresis_detector_0_0_impl_1" ParallelReportGen="true">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2025">
-          <Desc>Default settings for Implementation.</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2025"/>
         <Step Id="init_design"/>
         <Step Id="opt_design"/>
         <Step Id="power_opt_design"/>
@@ -665,9 +636,7 @@
     </Run>
     <Run Id="led_subsystem_moving_average_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a35tcpg236-1" ConstrsSet="led_subsystem_moving_average_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="led_subsystem_moving_average_0_0_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/led_subsystem_moving_average_0_0_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/led_subsystem_moving_average_0_0_impl_1" ParallelReportGen="true">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2025">
-          <Desc>Default settings for Implementation.</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2025"/>
         <Step Id="init_design"/>
         <Step Id="opt_design"/>
         <Step Id="power_opt_design"/>
@@ -682,7 +651,7 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="master_wrapper_led_subsystem_wrapper_0_1_impl_1" Type="Ft2:EntireDesign" Part="xc7a35tcpg236-1" ConstrsSet="master_wrapper_led_subsystem_wrapper_0_1" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="master_wrapper_led_subsystem_wrapper_0_1_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/master_wrapper_led_subsystem_wrapper_0_1_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/master_wrapper_led_subsystem_wrapper_0_1_impl_1" ParallelReportGen="true">
+    <Run Id="led_subsystem_beat_color_auto_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a35tcpg236-1" ConstrsSet="led_subsystem_beat_color_auto_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="led_subsystem_beat_color_auto_0_0_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/led_subsystem_beat_color_auto_0_0_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/led_subsystem_beat_color_auto_0_0_impl_1" ParallelReportGen="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2025">
           <Desc>Default settings for Implementation.</Desc>
@@ -720,7 +689,7 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="led_subsystem_beat_color_auto_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a35tcpg236-1" ConstrsSet="led_subsystem_beat_color_auto_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="led_subsystem_beat_color_auto_0_0_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/led_subsystem_beat_color_auto_0_0_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/led_subsystem_beat_color_auto_0_0_impl_1" ParallelReportGen="true">
+    <Run Id="master_wrapper_led_subsystem_wrapper_0_1_impl_1" Type="Ft2:EntireDesign" Part="xc7a35tcpg236-1" ConstrsSet="master_wrapper_led_subsystem_wrapper_0_1" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="master_wrapper_led_subsystem_wrapper_0_1_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/master_wrapper_led_subsystem_wrapper_0_1_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/master_wrapper_led_subsystem_wrapper_0_1_impl_1" ParallelReportGen="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2025">
           <Desc>Default settings for Implementation.</Desc>
